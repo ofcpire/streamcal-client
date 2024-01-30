@@ -1,15 +1,16 @@
 import React from 'react';
-import { Outlet, createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import ChannelPage from './pages/ChannelPage';
 import StreamcalPage from './pages/StreamcalPage';
 import ErrorPage from './pages/ErrorPage';
 import getChannelList from './lib/api/getChannelList';
 import getStreamcal from './lib/api/getStreamcal';
+import Layout from './components/global/Layout';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Outlet />,
+    element: <Layout />,
     children: [
       {
         index: true,
