@@ -1,4 +1,5 @@
 import React from 'react';
+import timestampToKo from '../../lib/utils/timestampToKo';
 
 export default function LogViewer({
   streamLogArray,
@@ -11,8 +12,10 @@ export default function LogViewer({
         return (
           <div key={streamLog._id}>
             ---
-            <div>{streamLog.liveCategory}</div>
-            <div>{streamLog.timestamp}</div>
+            <div>
+              {streamLog.liveCategory ? streamLog.liveCategory : 'null'}
+            </div>
+            <div>{timestampToKo(streamLog.timestamp)}</div>
             <div>{streamLog.status}</div>
             ---
           </div>
