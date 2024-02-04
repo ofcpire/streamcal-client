@@ -10,7 +10,12 @@ export default function StreamcalPage() {
 
   return (
     <section>
-      <StreamcalContainer streamcalData={streamcalData} />
+      {streamcalData ? (
+        <StreamcalContainer
+          streamcalData={streamcalData}
+          setStreamcalData={setStreamcalData}
+        />
+      ) : null}
     </section>
   );
 }
