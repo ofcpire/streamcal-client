@@ -3,6 +3,7 @@ interface ChannelInfoType {
   channelName: string;
   verifiedMark: boolean;
   channelType: string;
+  createdAt: string;
 }
 
 interface StreamcalType {
