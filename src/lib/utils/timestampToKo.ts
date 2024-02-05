@@ -3,7 +3,7 @@ import 'dayjs/locale/ko';
 dayjs.locale('ko');
 
 const timestampToKo = (utcString: string) => {
-  return dayjs(utcString).format('YYYY-MM-DD HH시 mm분');
+  return dayjs(utcString).format('YYYY-MM-DD H시 m분');
 };
 
 export default timestampToKo;
