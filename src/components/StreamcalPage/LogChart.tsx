@@ -13,13 +13,14 @@ export default function LogChart({
   timeline(Highcharts);
 
   return (
-    <article>
-      --logChart--
-      <HighchartsReact
-        highcharts={Highcharts}
-        options={logToChartOptions(streamLogArray)}
-      />
-      ----
+    <article className='sc-lightArticle'>
+      <h3 className='sc-articleHeader mb-0'>타임라인</h3>
+      <div className='rounded-xl width-max p-2 md:p-4'>
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={logToChartOptions(streamLogArray)}
+        />
+      </div>
     </article>
   );
 }

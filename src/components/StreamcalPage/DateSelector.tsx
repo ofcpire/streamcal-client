@@ -13,26 +13,38 @@ export default function DateSelector({
   channelInfo: ChannelInfoType;
 }) {
   const [date, setDate] = useState('');
+  const [isChanged, setIsChanged] = useState(false);
   const dateChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
     setDate(e.target.value);
+    setIsChanged(true);
   };
 
   const loadByDateHandler = () => {
     getStreamcal(channelInfo.channelId, date).then((newStreamcalData) => {
       setStreamcalData(newStreamcalData);
     });
+    setIsChanged(false);
   };
 
   return (
-    <>
-      <input
-        type='date'
-        onChange={dateChangeHandler}
-        id='streamcal-date'
-        min={isoToYMDString(channelInfo.createdAt)}
-        max={dayjs().format('YYYY-MM-DD')}></input>
-      <button onClick={loadByDateHandler}>Load by date</button>
-    </>
+    <article className='sc-lightArticle'>
+      <h3 className='sc-articleHeader'>날짜 선택</h3>
+      <div className='date-input-wrapper flex'>
+        <input
+          className='rounded-lg p-1 mr-2'
+          type='date'
+          onChange={dateChangeHandler}
+          id='streamcal-date'
+          min={isoToYMDString(channelInfo.createdAt)}
+          max={dayjs().format('YYYY-MM-DD')}></input>
+        <button
+          onClick={loadByDateHandler}
+          className='sc-lightButton disabled:bg-scDarkGreyColor'
+          disabled={!isChanged}>
+          불러오기
+        </button>
+      </div>
+    </article>
   );
 }

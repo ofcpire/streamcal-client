@@ -1,5 +1,5 @@
 import React from 'react';
-import timestampToKo from '../../lib/utils/timestampToKo';
+import LogViewerItem from './LogViewerItem';
 
 export default function LogViewer({
   streamLogArray,
@@ -7,19 +7,10 @@ export default function LogViewer({
   streamLogArray: StreamLogType[];
 }) {
   return (
-    <article>
-      {streamLogArray.map((streamLog) => {
-        return (
-          <div key={streamLog._id}>
-            ---
-            <div>
-              {streamLog.liveCategory ? streamLog.liveCategory : 'null'}
-            </div>
-            <div>{timestampToKo(streamLog.timestamp)}</div>
-            <div>{streamLog.status}</div>
-            ---
-          </div>
-        );
+    <article className='sc-lightArticle'>
+      <h3 className='sc-articleHeader'>방송 기록</h3>
+      {streamLogArray.map((streamLog: StreamLogType) => {
+        return <LogViewerItem streamLog={streamLog} key={streamLog._id} />;
       })}
     </article>
   );
