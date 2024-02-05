@@ -16,6 +16,7 @@ export default function StreamcalContainer({
       <DateSelector
         setStreamcalData={setStreamcalData}
         channelInfo={streamcalData.channelInfo}
+        metadata={streamcalData.metadata}
       />
       <LogChart streamLogArray={streamcalData.log} />
       <LogViewer streamLogArray={streamcalData.log} />

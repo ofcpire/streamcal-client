@@ -9,6 +9,7 @@ interface ChannelInfoType {
 interface StreamcalType {
   channelInfo: ChannelInfoType;
   log: StreamLogType[];
+  metadata: LogMetadataType;
 }
 
 interface StreamLogType {
@@ -20,4 +21,9 @@ interface StreamLogType {
   liveCategory: string;
   status: string;
   liveCategoryValue: string;
+}
+
+interface LogMetadataType {
+  updating: boolean;
+  targetDate: string;
 }

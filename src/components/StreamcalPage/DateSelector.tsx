@@ -8,11 +8,13 @@ dayjs.locale('ko');
 export default function DateSelector({
   setStreamcalData,
   channelInfo,
+  metadata,
 }: {
   setStreamcalData: React.Dispatch<React.SetStateAction<StreamcalType>>;
   channelInfo: ChannelInfoType;
+  metadata: LogMetadataType;
 }) {
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(metadata.targetDate);
   const [isChanged, setIsChanged] = useState(false);
   const dateChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDate(e.target.value);
@@ -31,6 +33,7 @@ export default function DateSelector({
       <h3 className='sc-articleHeader'>날짜 선택</h3>
       <div className='date-input-wrapper flex'>
         <input
+          value={date}
           className='rounded-lg p-1 mr-2'
           type='date'
           onChange={dateChangeHandler}
