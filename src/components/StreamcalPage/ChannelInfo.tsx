@@ -43,7 +43,7 @@ export default function ChannelInfo({
         className={
           isLiked
             ? 'group sc-lightButton absolute right-4 bg-scGreenColor hover:bg-scRedColor'
-            : 'group sc-lightButton absolute right-4 bg-scDarkGreyColor'
+            : 'group sc-lightButton absolute right-4'
         }>
         <span className='group-hover:hidden'>
           {isLiked ? '즐겨찾기 중' : '즐겨찾기'}
