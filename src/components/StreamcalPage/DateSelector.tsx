@@ -15,7 +15,6 @@ export default function DateSelector({
   const [date, setDate] = useState('');
   const [isChanged, setIsChanged] = useState(false);
   const dateChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     setDate(e.target.value);
     setIsChanged(true);
   };
