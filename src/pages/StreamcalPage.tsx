@@ -9,13 +9,13 @@ export default function StreamcalPage() {
   );
 
   return (
-    <section>
+    <>
       {streamcalData ? (
         <StreamcalContainer
           streamcalData={streamcalData}
           setStreamcalData={setStreamcalData}
         />
       ) : null}
-    </section>
+    </>
   );
 }
