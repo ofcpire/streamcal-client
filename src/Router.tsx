@@ -6,6 +6,7 @@ import ErrorPage from './pages/ErrorPage';
 import getChannelList from './lib/api/getChannelList';
 import getStreamcal from './lib/api/getStreamcal';
 import Layout from './components/global/Layout';
+import sortChannelList from './lib/utils/sortChannelList';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
         index: true,
         element: <ChannelPage />,
         loader: async () => {
-          return await getChannelList();
+          const channelList = await getChannelList();
+          return sortChannelList(channelList);
         },
       },
       {
