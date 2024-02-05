@@ -11,7 +11,7 @@ export default function StreamcalContainer({
   setStreamcalData: React.Dispatch<React.SetStateAction<StreamcalType>>;
 }) {
   return (
-    <section className='w-screen md:max-w-screen-xl'>
+    <section className='w-screen md:max-w-screen-xl md:mx-4'>
       <ChannelInfo channelInfo={streamcalData.channelInfo} />
       <DateSelector
         setStreamcalData={setStreamcalData}

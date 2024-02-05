@@ -7,8 +7,7 @@ function Layout() {
   return (
     <>
       <Header />
-
-      <main className='font-sans antialiased bg-white flex md:max-w min-h-[90vh] justify-center'>
+      <main className='font-sans antialiased bg-white flex md:max-w min-h-[95vh] justify-center pt-[64px] md:pt-[88px]'>
         <Outlet />
       </main>
       <Footer />

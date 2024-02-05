@@ -8,7 +8,7 @@ export default function Header() {
   };
 
   return (
-    <header className='p-4  md:p-6 text-center md:text-left bg-scGreenColor'>
+    <header className='p-4 md:p-6 text-center md:text-left bg-scGreenColor fixed w-screen z-50'>
       <h1>
         <button
           onClick={goToListHandler}

@@ -8,13 +8,16 @@ export default function ChannelInfo({
   };
 
   return (
-    <article className='sc-lightArticle p-4'>
-      <h2 className='font-doHyeon text-4xl'>{channelInfo.channelName}</h2>
-      <div>
+    <article className='sc-lightArticle p-4 flex relative'>
+      <div className='flex flex-col'>
+        <h2 className='font-doHyeon text-4xl'>
+          {channelInfo.channelName}
+        </h2>
         <button onClick={GoToLiveHandler} className='sc-lightButton mt-2'>
           라이브 보러 가기
         </button>
       </div>
+      <button className='sc-lightButton absolute right-4'>즐겨찾기</button>
     </article>
   );
 }
