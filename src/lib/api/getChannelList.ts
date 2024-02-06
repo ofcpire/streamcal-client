@@ -3,7 +3,7 @@ import api from './axios';
 const getChannelList = async (page?: number) => {
   const params = page ? { page } : {};
   try {
-    const channelList = await api.get('streamcal', { params });
+    const channelList = await api.get('channel', { params });
     return channelList.data;
   } catch (err) {
     console.log(err);
