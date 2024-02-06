@@ -24,14 +24,19 @@ const logToChartOptions = (streamLog: StreamLogType[]) => {
           name:
             streamLog.status === 'CLOSE'
               ? 'CLOSE'
-              : streamLog.liveCategory
+              : streamLog.liveCategory && streamLog.liveCategoryValue
               ? streamLog.liveCategoryValue
+              : streamLog.liveCategory
+              ? streamLog.liveCategory
               : '카테고리 없음',
           x: new Date(streamLog.timestamp),
           start: timestampToKo(streamLog.timestamp),
-          liveCategory: streamLog.liveCategory
-            ? streamLog.liveCategoryValue
-            : '카테고리 없음',
+          liveCategory:
+            streamLog.liveCategory && streamLog.liveCategoryValue
+              ? streamLog.liveCategoryValue
+              : streamLog.liveCategory
+              ? streamLog.liveCategory
+              : '카테고리 없음',
           liveTitle: streamLog.liveTitle,
         };
     }
