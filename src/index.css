@@ -19,6 +19,10 @@
     @apply p-2 md:p-4 text-brightDarkColor rounded-lg m-4 bg-scOffWhiteColor align-middle;
   }
 
+  .sc-lightArticleSkeleton {
+    @apply sc-lightArticle h-[300px] animate-pulse;
+  }
+
   .sc-articleHeader {
     @apply m-1 mb-4 text-xl font-bold;
   }
