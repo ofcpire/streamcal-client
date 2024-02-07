@@ -17,8 +17,7 @@ const router = createBrowserRouter([
         index: true,
         element: <ChannelPage />,
         loader: async () => {
-          const channelList = await getChannelList();
-          return sortChannelList(channelList);
+          return await getChannelList();
         },
       },
       {
