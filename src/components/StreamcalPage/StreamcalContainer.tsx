@@ -19,6 +19,7 @@ export default function StreamcalContainer({
       <ChannelInfo channelInfo={streamcalData.channelInfo} />
       <DateSelector
         setStreamcalData={setStreamcalData}
+        isLoading={isLoading}
         setIsLoading={setIsLoading}
         channelInfo={streamcalData.channelInfo}
         metadata={streamcalData.metadata}

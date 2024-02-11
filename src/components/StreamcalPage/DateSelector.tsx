@@ -7,11 +7,13 @@ dayjs.locale('ko');
 
 export default function DateSelector({
   setStreamcalData,
+  isLoading,
   setIsLoading,
   channelInfo,
   metadata,
 }: {
   setStreamcalData: React.Dispatch<React.SetStateAction<StreamcalType>>;
+  isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   channelInfo: ChannelInfoType;
   metadata: LogMetadataType;
@@ -49,8 +51,8 @@ export default function DateSelector({
         <button
           onClick={loadByDateHandler}
           className='sc-lightButton disabled:bg-scDarkGreyColor'
-          disabled={!isChanged}>
-          불러오기
+          disabled={!isChanged || isLoading}>
+          {isLoading ? '불러오는 중' : '불러오기'}
         </button>
       </div>
     </article>
