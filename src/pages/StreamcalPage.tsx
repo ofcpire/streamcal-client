@@ -13,11 +13,13 @@ export default function StreamcalPage() {
   const { channelId } = useParams();
   const [targetDate, setTargetDate] = useState<string | null>(null);
   const { isLoading, data } = useQuery({
-    queryKey: ['get-streamcal', targetDate],
-    queryFn: () => {
-      if (channelId) return getStreamcal(channelId);
+    queryKey: [channelId, targetDate],
+    queryFn: async () => {
+      if (channelId && targetDate)
+        return await getStreamcal(channelId, targetDate);
+      else if (channelId) return await getStreamcal(channelId);
+      else throw new Error();
     },
-    gcTime: 60 * 1000,
     retry: 1,
     throwOnError: true,
   });
