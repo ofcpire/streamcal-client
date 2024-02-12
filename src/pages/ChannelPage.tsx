@@ -10,7 +10,6 @@ export default function ChannelPage() {
     queryFn: () => {
       return getChannelList();
     },
-    gcTime: 60 * 1000,
     retry: 1,
     throwOnError: true,
   });

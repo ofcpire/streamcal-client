@@ -7,9 +7,8 @@ import getStreamcal from '../lib/api/getStreamcal';
 import SkeletonStreamcalPage from '../components/StreamcalPage/SkeletonStreamcalPage';
 
 export default function StreamcalPage() {
-  // const [streamcalData, setStreamcalData] = useState<StreamcalType>(
-  //   useLoaderData() as StreamcalType
   // );
+  const [isInitial, setIsInitial] = useState(true);
   const { channelId } = useParams();
   const [targetDate, setTargetDate] = useState<string | null>(null);
   const { isLoading, data } = useQuery({
@@ -28,19 +27,20 @@ export default function StreamcalPage() {
   };
 
   useEffect(() => {
-    console.log(data);
+    if (data) setIsInitial(false);
   }, [data]);
 
   return (
     <>
-      {isLoading ? (
+      {isLoading && isInitial ? (
         <SkeletonStreamcalPage />
-      ) : data ? (
+      ) : (
         <StreamcalContainer
+          isLoading={isLoading}
           streamcalData={data}
           changeLogDate={changeLogDate}
         />
-      ) : null}
+      )}
     </>
   );
 }

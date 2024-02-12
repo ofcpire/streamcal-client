@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import ChannelInfo from './ChannelInfo';
 import DateSelector from './DateSelector';
@@ -8,33 +8,44 @@ import LogViewer from './LogViewer';
 export default function StreamcalContainer({
   streamcalData,
   changeLogDate,
+  isLoading,
 }: {
-  streamcalData: StreamcalType;
+  streamcalData: StreamcalType | undefined;
   changeLogDate: (date: string) => void;
+  isLoading: boolean;
 }) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [dataHolder, setDataHolder] = useState<StreamcalType | undefined>(
+    streamcalData
+  );
+
+  useEffect(() => {
+    if (streamcalData) setDataHolder(streamcalData);
+  }, [streamcalData]);
 
   return (
-    <section className='w-screen md:max-w-screen-xl md:mx-4'>
-      <ChannelInfo channelInfo={streamcalData.channelInfo} />
-      <DateSelector
-        changeLogDate={changeLogDate}
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
-        channelInfo={streamcalData.channelInfo}
-        metadata={streamcalData.metadata}
-      />
-      {isLoading ? (
-        <>
-          <article className='sc-lightArticleSkeleton'></article>
-          <article className='sc-lightArticleSkeleton'></article>
-        </>
-      ) : (
-        <>
-          <LogChart streamLogArray={streamcalData.log} />
-          <LogViewer streamLogArray={streamcalData.log} />
-        </>
+    <>
+      {dataHolder && (
+        <section className='w-screen md:max-w-screen-xl md:mx-4'>
+          <ChannelInfo channelInfo={dataHolder.channelInfo} />
+          <DateSelector
+            changeLogDate={changeLogDate}
+            isLoading={isLoading}
+            channelInfo={dataHolder.channelInfo}
+            metadata={dataHolder.metadata}
+          />
+          {isLoading ? (
+            <>
+              <article className='sc-lightArticleSkeleton'></article>
+              <article className='sc-lightArticleSkeleton'></article>
+            </>
+          ) : (
+            <>
+              <LogChart streamLogArray={dataHolder.log} />
+              <LogViewer streamLogArray={dataHolder.log} />
+            </>
+          )}
+        </section>
       )}
-    </section>
+    </>
   );
 }

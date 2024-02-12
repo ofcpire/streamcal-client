@@ -7,13 +7,11 @@ dayjs.locale('ko');
 export default function DateSelector({
   changeLogDate,
   isLoading,
-  setIsLoading,
   channelInfo,
   metadata,
 }: {
   changeLogDate: (date: string) => void;
   isLoading: boolean;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   channelInfo: ChannelInfoType;
   metadata: LogMetadataType;
 }) {
@@ -26,6 +24,7 @@ export default function DateSelector({
 
   const loadByDateHandler = async () => {
     changeLogDate(date);
+    setIsChanged(false);
   };
 
   return (
