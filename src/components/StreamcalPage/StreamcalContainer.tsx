@@ -4,7 +4,6 @@ import ChannelInfo from './ChannelInfo';
 import DateSelector from './DateSelector';
 import LogChart from './LogChart';
 import LogViewer from './LogViewer';
-import { useQuery } from '@tanstack/react-query';
 
 export default function StreamcalContainer({
   streamcalData,

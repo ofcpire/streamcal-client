@@ -42,6 +42,7 @@ export default function ChannelList({
                     key={channelInfo.channelId}
                   />
                 );
+              else return null;
             })}
           </div>
         </article>
@@ -64,6 +65,7 @@ export default function ChannelList({
                 key={channelInfo.channelId}
               />
             );
+          else return null;
         })}
       </div>
     </section>

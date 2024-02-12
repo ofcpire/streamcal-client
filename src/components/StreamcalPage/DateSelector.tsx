@@ -1,4 +1,3 @@
-import getStreamcal from '../../lib/api/getStreamcal';
 import { useState } from 'react';
 import isoToYMDString from '../../lib/utils/isoToYMDString';
 import dayjs from 'dayjs';
