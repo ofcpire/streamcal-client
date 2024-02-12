@@ -13,16 +13,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <ChannelPage />,
-        // loader: async () => {
-        //   return await getChannelList();
-        // },
       },
       {
         path: '/:channelId',
         element: <StreamcalPage />,
-        // loader: async ({ params }) => {
-        //   return await getStreamcal(params.channelId as string);
-        // },
       },
     ],
     errorElement: <ErrorPage />,
