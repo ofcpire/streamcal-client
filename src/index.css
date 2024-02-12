@@ -20,7 +20,7 @@
   }
 
   .sc-lightArticleSkeleton {
-    @apply sc-lightArticle h-[300px] animate-pulse;
+    @apply sc-lightArticle h-[150px] animate-pulse;
   }
 
   .sc-articleHeader {

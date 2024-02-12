@@ -1,6 +1,9 @@
 import api from './axios';
 
-const getStreamcal = async (channelId: string, date?: string) => {
+const getStreamcal = async (
+  channelId: string,
+  date?: string
+): Promise<StreamcalType> => {
   const params = date ? { date } : {};
   try {
     const streamLog = await api.get(`streamcal/${channelId}`, { params });

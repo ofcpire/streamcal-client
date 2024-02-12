@@ -1,11 +1,27 @@
 import React from 'react';
-import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
 import ChannelList from '../components/channelPage/ChannelList';
+import SkeletonChannelPage from '../components/channelPage/SekeletonChannelPage';
+import { useQuery } from '@tanstack/react-query';
+import getChannelList from '../lib/api/getChannelList';
 
 export default function ChannelPage() {
-  const [channelListData, setChannelListData] = useState<
-    ChannelInfoType[]
-  >(useLoaderData() as ChannelInfoType[]);
-  return <ChannelList channelListData={channelListData} />;
+  const { isLoading, data } = useQuery({
+    queryKey: ['getChannelList'],
+    queryFn: () => {
+      return getChannelList();
+    },
+    gcTime: 60 * 1000,
+    retry: 1,
+    throwOnError: true,
+  });
+
+  return (
+    <>
+      {isLoading ? (
+        <SkeletonChannelPage />
+      ) : data ? (
+        <ChannelList channelListData={data} />
+      ) : null}
+    </>
+  );
 }

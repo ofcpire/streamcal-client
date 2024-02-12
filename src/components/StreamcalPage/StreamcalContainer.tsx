@@ -4,13 +4,14 @@ import ChannelInfo from './ChannelInfo';
 import DateSelector from './DateSelector';
 import LogChart from './LogChart';
 import LogViewer from './LogViewer';
+import { useQuery } from '@tanstack/react-query';
 
 export default function StreamcalContainer({
   streamcalData,
-  setStreamcalData,
+  changeLogDate,
 }: {
   streamcalData: StreamcalType;
-  setStreamcalData: React.Dispatch<React.SetStateAction<StreamcalType>>;
+  changeLogDate: (date: string) => void;
 }) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,7 +19,7 @@ export default function StreamcalContainer({
     <section className='w-screen md:max-w-screen-xl md:mx-4'>
       <ChannelInfo channelInfo={streamcalData.channelInfo} />
       <DateSelector
-        setStreamcalData={setStreamcalData}
+        changeLogDate={changeLogDate}
         isLoading={isLoading}
         setIsLoading={setIsLoading}
         channelInfo={streamcalData.channelInfo}

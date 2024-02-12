@@ -6,13 +6,13 @@ import 'dayjs/locale/ko';
 dayjs.locale('ko');
 
 export default function DateSelector({
-  setStreamcalData,
+  changeLogDate,
   isLoading,
   setIsLoading,
   channelInfo,
   metadata,
 }: {
-  setStreamcalData: React.Dispatch<React.SetStateAction<StreamcalType>>;
+  changeLogDate: (date: string) => void;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   channelInfo: ChannelInfoType;
@@ -26,14 +26,7 @@ export default function DateSelector({
   };
 
   const loadByDateHandler = async () => {
-    setIsLoading(true);
-    await getStreamcal(channelInfo.channelId, date)
-      .then((newStreamcalData) => {
-        setStreamcalData(newStreamcalData);
-        setIsChanged(false);
-        setIsLoading(false);
-      })
-      .catch((err) => {});
+    changeLogDate(date);
   };
 
   return (

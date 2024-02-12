@@ -3,10 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import ChannelPage from './pages/ChannelPage';
 import StreamcalPage from './pages/StreamcalPage';
 import ErrorPage from './pages/ErrorPage';
-import getChannelList from './lib/api/getChannelList';
-import getStreamcal from './lib/api/getStreamcal';
 import Layout from './components/global/Layout';
-import sortChannelList from './lib/utils/sortChannelList';
 
 const router = createBrowserRouter([
   {
@@ -16,16 +13,16 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <ChannelPage />,
-        loader: async () => {
-          return await getChannelList();
-        },
+        // loader: async () => {
+        //   return await getChannelList();
+        // },
       },
       {
         path: '/:channelId',
         element: <StreamcalPage />,
-        loader: async ({ params }) => {
-          return await getStreamcal(params.channelId as string);
-        },
+        // loader: async ({ params }) => {
+        //   return await getStreamcal(params.channelId as string);
+        // },
       },
     ],
     errorElement: <ErrorPage />,
