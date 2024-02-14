@@ -7,6 +7,7 @@ import {
 } from '../../lib/localStorage/likeChannel';
 import sortChannelList from '../../lib/utils/sortChannelList';
 import { LuArrowUpDown } from 'react-icons/lu';
+import ChannelListSplash from './ChannelListSplash';
 
 export default function ChannelList({
   channelListData,
@@ -22,10 +23,7 @@ export default function ChannelList({
 
   return (
     <section className='w-screen md:max-w-screen-xl flex flex-col md:justify-center content-middle mx-2 md:mx-4'>
-      <div className='font-bold text-lg md:text-3xl text-brightDarkColor text-center m-4 md:mt-0'>
-        <span className='text-scGreenColor'>치지직</span> 스트리머의 기록을
-        쉽게 모아 보기.
-      </div>
+      <ChannelListSplash />
       {getLikeChannel().length > 0 ? (
         <article className='mb-2'>
           <h2 className='m-1 text-[16px] font-semibold md:text-lg'>
