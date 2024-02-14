@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom';
 import './index.css';
 import router from './Router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { HelmetProvider } from 'react-helmet-async';
 const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
@@ -11,6 +12,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <QueryClientProvider client={queryClient}>
-    <RouterProvider router={router} />
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
   </QueryClientProvider>
 );

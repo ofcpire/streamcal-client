@@ -5,6 +5,7 @@ import StreamcalContainer from '../components/StreamcalPage/StreamcalContainer';
 import { useQuery } from '@tanstack/react-query';
 import getStreamcal from '../lib/api/getStreamcal';
 import SkeletonStreamcalPage from '../components/StreamcalPage/SkeletonStreamcalPage';
+import StreamcalHelmet from '../components/StreamcalPage/StreamcalHelmet';
 
 export default function StreamcalPage() {
   // );
@@ -35,11 +36,14 @@ export default function StreamcalPage() {
       {isLoading && isInitial ? (
         <SkeletonStreamcalPage />
       ) : (
-        <StreamcalContainer
-          isLoading={isLoading}
-          streamcalData={data}
-          changeLogDate={changeLogDate}
-        />
+        <>
+          <StreamcalContainer
+            isLoading={isLoading}
+            streamcalData={data}
+            changeLogDate={changeLogDate}
+          />
+          <StreamcalHelmet channelInfo={data?.channelInfo} />
+        </>
       )}
     </>
   );
