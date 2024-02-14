@@ -6,6 +6,7 @@ import {
   removeLikeChannel,
 } from '../../lib/localStorage/likeChannel';
 import { FaRegHeart, FaHeart, FaHeartBroken } from 'react-icons/fa';
+import { RxOpenInNewWindow } from 'react-icons/rx';
 
 export default function ChannelInfo({
   channelInfo,
@@ -26,15 +27,18 @@ export default function ChannelInfo({
   };
 
   const GoToLiveHandler = () => {
-    window.location.href = `https://chzzk.naver.com/live/${channelInfo.channelId}`;
+    window.open(`https://chzzk.naver.com/live/${channelInfo.channelId}`);
   };
 
   return (
     <article className='sc-lightArticle p-4 flex relative flex-col'>
       <h2 className='font-doHyeon text-4xl'>{channelInfo.channelName}</h2>
       <div className='flex justify-between mt-2 md:mt-4'>
-        <button onClick={GoToLiveHandler} className='sc-lightButton mr-2'>
-          라이브 보러 가기
+        <button
+          onClick={GoToLiveHandler}
+          className='sc-lightButton mr-2 flex items-center'>
+          치지직 라이브 보러 가기
+          <RxOpenInNewWindow />
         </button>
         <div className='flex flex-wrap'>
           <span className='m-2 font-semibold text-scDarkGreyColor'>
