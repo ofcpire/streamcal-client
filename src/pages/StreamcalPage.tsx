@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import StreamcalContainer from '../components/StreamcalPage/StreamcalContainer';
 import { useQuery } from '@tanstack/react-query';
 import getStreamcal from '../lib/api/getStreamcal';
@@ -9,9 +9,12 @@ import StreamcalHelmet from '../components/StreamcalPage/StreamcalHelmet';
 
 export default function StreamcalPage() {
   // );
+  const location = useLocation();
   const [isInitial, setIsInitial] = useState(true);
   const { channelId } = useParams();
-  const [targetDate, setTargetDate] = useState<string | null>(null);
+  const [targetDate, setTargetDate] = useState<string | null>(
+    new URLSearchParams(location.search).get('date')
+  );
   const { isLoading, data } = useQuery({
     queryKey: [channelId, targetDate],
     queryFn: async () => {
