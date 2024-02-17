@@ -7,6 +7,7 @@ import {
 } from '../../lib/localStorage/likeChannel';
 import { FaRegHeart, FaHeart, FaHeartBroken } from 'react-icons/fa';
 import { RxOpenInNewWindow } from 'react-icons/rx';
+import isoToYMDString from '../../lib/utils/isoToYMDString';
 
 export default function ChannelInfo({
   channelInfo,
@@ -33,6 +34,9 @@ export default function ChannelInfo({
   return (
     <article className='sc-lightArticle p-4 flex relative flex-col'>
       <h2 className='font-doHyeon text-4xl'>{channelInfo.channelName}</h2>
+      <span className='text-sm'>
+        {isoToYMDString(channelInfo.createdAt)}부터 스트리밍 기록 중!
+      </span>
       <div className='flex justify-between mt-2 md:mt-4'>
         <button
           onClick={GoToLiveHandler}
