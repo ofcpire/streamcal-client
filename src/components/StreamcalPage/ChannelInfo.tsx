@@ -35,13 +35,13 @@ export default function ChannelInfo({
     <article className='sc-lightArticle p-4 flex relative flex-col'>
       <h2 className='font-doHyeon text-4xl'>{channelInfo.channelName}</h2>
       <span className='text-sm'>
-        {isoToYMDString(channelInfo.createdAt)}부터 스트리밍 기록 중!
+        {isoToYMDString(channelInfo.createdAt)}부터 스트리밍 기록 중
       </span>
       <div className='flex justify-between mt-2 md:mt-4'>
         <button
           onClick={GoToLiveHandler}
           className='sc-lightButton mr-2 flex items-center'>
-          치지직 라이브 보러 가기
+          치지직 라이브
           <RxOpenInNewWindow />
         </button>
         <div className='flex flex-wrap'>
