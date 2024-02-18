@@ -24,7 +24,7 @@
   }
 
   .sc-articleHeader {
-    @apply m-1 mb-4 text-xl font-bold;
+    @apply m-1 mb-2 text-base md:text-xl font-semibold;
   }
 
   .sc-lightButton {

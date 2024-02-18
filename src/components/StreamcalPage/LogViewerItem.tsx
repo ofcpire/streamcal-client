@@ -15,7 +15,7 @@ export default function LogViewerItem({
 
   return (
     <div className='m-2 mb-4 flex flex-col'>
-      <h4 className='m-1 ml-0 font-medium text-scGreenColor text-xl flex'>
+      <h4 className='m-1 ml-0 font-medium text-scGreenColor text-base md:text-xl flex items-center'>
         <span
           className={
             streamLog.status === 'OPEN'
@@ -33,7 +33,7 @@ export default function LogViewerItem({
       <div className='ml-2'>
         <div className='flex mb-1'>
           <span className={boxColorByStatus}>카테고리</span>
-          <span className='font-bold'>
+          <span className='font-semibold'>
             {streamLog.liveCategory
               ? `${streamLog.liveCategoryValue} (${underBarRemover(
                   streamLog.liveCategory
@@ -43,7 +43,7 @@ export default function LogViewerItem({
         </div>
         <div className='flex mb-1'>
           <span className={boxColorByStatus}>타이틀</span>
-          <span className='font-bold'>
+          <span className='font-semibold'>
             {streamLog.liveTitle ? streamLog.liveTitle : '타이틀 없음'}
           </span>
         </div>

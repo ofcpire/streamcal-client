@@ -28,8 +28,8 @@ export default function DateSelector({
   };
 
   return (
-    <article className='sc-lightArticle'>
-      <h3 className='sc-articleHeader'>날짜 선택</h3>
+    <article className='sc-lightArticle flex items-center justify-between md:justify-start flex-wrap'>
+      <h3 className='sc-articleHeader my-0 mr-4'>날짜 선택</h3>
       <div className='date-input-wrapper flex'>
         <input
           value={date}
