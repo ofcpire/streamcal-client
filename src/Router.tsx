@@ -15,7 +15,7 @@ const router = createBrowserRouter([
         element: <ChannelPage />,
       },
       {
-        path: '/:channelId',
+        path: '/zzk/:channelId',
         element: <StreamcalPage />,
       },
     ],

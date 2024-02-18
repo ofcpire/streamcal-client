@@ -8,7 +8,7 @@ export default function ChannelItem({
 }) {
   const navigate = useNavigate();
   const navToCalHandler = () => {
-    navigate(`/${channelInfo.channelId}`);
+    navigate(`/zzk/${channelInfo.channelId}`);
   };
   return (
     <div
