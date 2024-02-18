@@ -4,7 +4,7 @@ import logToChartOptions from '../../lib/utils/logToChartOptions';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import timeline from 'highcharts/modules/timeline';
 
-export default function LogChart({
+export default function DateLogChart({
   streamLogArray,
 }: {
   streamLogArray: StreamLogType[];

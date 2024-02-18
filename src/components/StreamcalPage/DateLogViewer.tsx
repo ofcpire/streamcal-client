@@ -1,7 +1,7 @@
 import React from 'react';
-import LogViewerItem from './LogViewerItem';
+import LogViewerItem from './DateLogViewerItem';
 
-export default function LogViewer({
+export default function DateLogViewer({
   streamLogArray,
 }: {
   streamLogArray: StreamLogType[];

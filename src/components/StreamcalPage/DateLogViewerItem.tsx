@@ -1,7 +1,7 @@
 import timestampToKo from '../../lib/utils/timestampToKo';
 import underBarRemover from '../../lib/utils/underBarRemover';
 
-export default function LogViewerItem({
+export default function DateLogViewerItem({
   streamLog,
 }: {
   streamLog: StreamLogType;

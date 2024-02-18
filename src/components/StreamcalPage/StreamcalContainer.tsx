@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import ChannelInfo from './ChannelInfo';
 import DateSelector from './DateSelector';
-import LogChart from './LogChart';
-import LogViewer from './LogViewer';
+import DateLogChart from './DateLogChart';
+import DateLogViewer from './DateLogViewer';
+import ViewSelector from './ViewSelector';
 
 export default function StreamcalContainer({
   streamcalData,
@@ -40,8 +41,8 @@ export default function StreamcalContainer({
             </>
           ) : (
             <>
-              <LogChart streamLogArray={dataHolder.log} />
-              <LogViewer streamLogArray={dataHolder.log} />
+              <DateLogChart streamLogArray={dataHolder.log} />
+              <DateLogViewer streamLogArray={dataHolder.log} />
             </>
           )}
         </section>
