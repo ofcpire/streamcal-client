@@ -11,15 +11,16 @@ export default function StreamcalPage() {
   // );
   const location = useLocation();
   const [isInitial, setIsInitial] = useState(true);
+  const [logType, setLogType] = useState('date');
   const { channelId } = useParams();
   const [targetDate, setTargetDate] = useState<string | null>(
     new URLSearchParams(location.search).get('date')
   );
   const { isLoading, data } = useQuery({
-    queryKey: [channelId, targetDate],
+    queryKey: [channelId, logType, targetDate],
     queryFn: async () => {
       if (channelId && targetDate)
-        return await getStreamcal(channelId, targetDate);
+        return await getStreamcal(channelId, targetDate, logType);
       else if (channelId) return await getStreamcal(channelId);
       else throw new Error();
     },
@@ -28,6 +29,10 @@ export default function StreamcalPage() {
   });
   const changeLogDate = (date: string) => {
     setTargetDate(date);
+  };
+
+  const changeLogType = (type: string) => {
+    setLogType(type);
   };
 
   useEffect(() => {
@@ -44,6 +49,7 @@ export default function StreamcalPage() {
             isLoading={isLoading}
             streamcalData={data}
             changeLogDate={changeLogDate}
+            changeLogType={changeLogType}
           />
           <StreamcalHelmet channelInfo={data?.channelInfo} />
         </>

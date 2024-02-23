@@ -1,6 +1,6 @@
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
-import logToChartOptions from '../../lib/utils/logToChartOptions';
+import logToChartOptions from '../../../lib/utils/logToChartOptions';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import timeline from 'highcharts/modules/timeline';
 
