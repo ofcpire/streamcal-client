@@ -26,4 +26,12 @@ interface StreamLogType {
 interface LogMetadataType {
   updating: boolean;
   targetDate: string;
+  type: string;
+  serverTime: string;
+}
+
+interface CategoryChartDataObjType {
+  liveCategory: string;
+  liveCategoryValue: string;
+  y: number;
 }
