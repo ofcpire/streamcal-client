@@ -17,7 +17,7 @@ export default function DateSelector({
   channelInfo: ChannelInfoType;
   metadata: LogMetadataType;
 }) {
-  const today = dayjs();
+  const today = dayjs(metadata.serverTime);
   const [date, setDate] = useState(isoToYMDString(today.toISOString()));
   const [isChanged, setIsChanged] = useState(false);
   const dateChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +42,7 @@ export default function DateSelector({
           onChange={dateChangeHandler}
           id='streamcal-date'
           min={isoToYMDString(channelInfo.createdAt)}
-          max={dayjs().format('YYYY-MM-DD')}></input>
+          max={dayjs(metadata.serverTime).format('YYYY-MM-DD')}></input>
         <button
           onClick={loadByDateHandler}
           className='sc-lightButton disabled:bg-scDarkGreyColor'

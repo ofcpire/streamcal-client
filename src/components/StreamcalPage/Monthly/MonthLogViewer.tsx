@@ -1,6 +1,9 @@
 import calGapFiller from '../../../lib/utils/streamcal/monthly/calGapFiller';
 import logToCalArray from '../../../lib/utils/streamcal/monthly/logToCalArray';
 import MonthLogViewerItem from './MonthLogViewerItem';
+import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
+dayjs.locale('ko');
 
 export default function MonthLogViewer({
   streamLogArray,
@@ -13,7 +16,12 @@ export default function MonthLogViewer({
 }) {
   return (
     <article className='sc-lightArticle'>
-      <h3 className='sc-articleHeader'>스트리밍 기록</h3>
+      <h3 className='sc-articleHeader flex justify-between'>
+        스트리밍 기록
+        <span className='text-base font-medium ml-2'>
+          {dayjs(metadata.targetDate).format('YYYY년 M월')}
+        </span>
+      </h3>
       <div className='grid sm:grid-cols-7'>
         {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map((day) => {
           return (

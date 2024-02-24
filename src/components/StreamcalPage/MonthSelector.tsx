@@ -17,7 +17,7 @@ export default function MonthSelector({
   channelInfo: ChannelInfoType;
   metadata: LogMetadataType;
 }) {
-  const today = dayjs();
+  const today = dayjs(metadata.serverTime);
   const [date, setDate] = useState({
     year: today.year(),
     month: today.month() + 1,
