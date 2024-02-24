@@ -12,7 +12,6 @@ const getStreamcal = async (
     streamLog.data.log = logSorter(streamLog.data.log);
     return streamLog.data;
   } catch (err) {
-    console.log(err);
     return Promise.reject(err);
   }
 };

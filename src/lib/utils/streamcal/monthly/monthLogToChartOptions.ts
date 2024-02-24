@@ -1,5 +1,4 @@
 const monthLogToChartOptions = (chartData: CategoryChartDataObjType[]) => {
-  console.log(chartData);
   const options = {
     title: {
       text: null,

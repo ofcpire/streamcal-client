@@ -11,7 +11,6 @@ const makeMonthOptions = (
   const end = dayjs(endDate);
   const startYear = start.year();
   const endYear = end.year();
-  console.log(`now year:${nowYear}`);
   if (nowYear === startYear && nowYear === endYear)
     return Array.from(
       { length: end.month() - start.month() + 1 },
