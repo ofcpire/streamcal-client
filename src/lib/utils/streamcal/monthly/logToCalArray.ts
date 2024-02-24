@@ -13,11 +13,10 @@ const logToCalArray = (logArray: StreamLogType[]) => {
     return {
       date: i + 1,
       log: filteredLog,
-      key: `7-${i + 7}`,
+      key: firstLogDate.date(i + 1).format('YYYYMMDD'),
       type,
     };
   });
-  console.log(calArray);
   return calArray;
 };
 

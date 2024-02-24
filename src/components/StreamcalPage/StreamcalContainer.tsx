@@ -52,6 +52,7 @@ export default function StreamcalContainer({
             <MonthLogContainer
               streamLogArray={dataHolder.log}
               metadata={dataHolder.metadata}
+              channelInfo={dataHolder.channelInfo}
             />
           ) : null}
         </section>

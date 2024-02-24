@@ -34,7 +34,6 @@ export default function MonthSelector({
   }, [channelInfo.createdAt]);
 
   useEffect(() => {
-    console.log(date.year);
     setMonthArray(
       makeMonthOptions(
         date.year,

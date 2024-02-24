@@ -1,3 +1,7 @@
+import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
+dayjs.locale('ko');
+
 interface MonthLogViewerItemProps {
   dateLog: {
     date: number;
@@ -5,10 +9,14 @@ interface MonthLogViewerItemProps {
     key: string;
     type: string;
   };
+  createdAt: string;
+  today: string;
 }
 
 export default function MonthLogViewerItem({
   dateLog,
+  createdAt,
+  today,
 }: MonthLogViewerItemProps) {
   const categories = Array.from(
     new Set(
@@ -34,7 +42,12 @@ export default function MonthLogViewerItem({
         }>
         {dateLog.date}
       </span>
-      <div className='flex sm:flex-col m-1 flex-wrap'>
+      <div className='flex sm:flex-col m-1 flex-wrap items-center md:items-start'>
+        {dateLog.key === dayjs(createdAt).format('YYYYMMDD') ? (
+          <span className='sc-smInfoBox m-0'>기록 시작</span>
+        ) : dateLog.key === dayjs(today).format('YYYYMMDD') ? (
+          <span className='sc-smInfoBox m-0'>오늘</span>
+        ) : null}
         {categories.map((log, i) => {
           return (
             <span className='inline-block text-xs text-wrap pr-1 sm:pr-0'>

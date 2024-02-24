@@ -4,8 +4,12 @@ import MonthLogViewerItem from './MonthLogViewerItem';
 
 export default function MonthLogViewer({
   streamLogArray,
+  metadata,
+  channelInfo,
 }: {
   streamLogArray: StreamLogType[];
+  metadata: LogMetadataType;
+  channelInfo: ChannelInfoType;
 }) {
   return (
     <article className='sc-lightArticle'>
@@ -35,7 +39,12 @@ export default function MonthLogViewer({
         })}
         {logToCalArray(streamLogArray).map((dateLog, i) => {
           return (
-            <MonthLogViewerItem dateLog={dateLog} key={dateLog.key} />
+            <MonthLogViewerItem
+              dateLog={dateLog}
+              createdAt={channelInfo.createdAt}
+              today={metadata.serverTime}
+              key={dateLog.key}
+            />
           );
         })}
         {calGapFiller(streamLogArray, 'end').map((ele, i) => {
