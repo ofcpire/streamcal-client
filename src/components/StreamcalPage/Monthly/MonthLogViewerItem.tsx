@@ -42,11 +42,11 @@ export default function MonthLogViewerItem({
         }>
         {dateLog.date}
       </span>
-      <div className='flex sm:flex-col m-1 flex-wrap items-center md:items-start'>
+      <div className='flex sm:flex-col m-1 flex-wrap items-center sm:items-start'>
         {dateLog.key === dayjs(createdAt).format('YYYYMMDD') ? (
-          <span className='sc-smInfoBox m-0'>기록 시작</span>
+          <span className='sc-smInfoBox m-0 mr-1 sm:mr-0'>기록 시작</span>
         ) : dateLog.key === dayjs(today).format('YYYYMMDD') ? (
-          <span className='sc-smInfoBox m-0'>오늘</span>
+          <span className='sc-smInfoBox m-0 mr-1 sm:mr-0'>오늘</span>
         ) : null}
         {categories.map((log, i) => {
           return (
