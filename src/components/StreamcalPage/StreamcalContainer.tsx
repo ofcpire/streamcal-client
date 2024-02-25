@@ -45,7 +45,10 @@ export default function StreamcalContainer({
             </>
           ) : dataHolder.metadata.type === 'date' ? (
             <>
-              <DateLogChart streamLogArray={dataHolder.log} />
+              <DateLogChart
+                streamLogArray={dataHolder.log}
+                metadata={dataHolder.metadata}
+              />
               <DateLogViewer streamLogArray={dataHolder.log} />
             </>
           ) : dataHolder.metadata.type === 'month' ? (

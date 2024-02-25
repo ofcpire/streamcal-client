@@ -1,9 +1,12 @@
-import timestampToKo from './timestampToKo';
+import timestampToKo from '../../timestampToKo';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 dayjs.locale('ko');
 
-const logToChartOptions = (streamLog: StreamLogType[]) => {
+const logToChartOptions = (
+  streamLog: StreamLogType[],
+  metadata: LogMetadataType
+) => {
   let logDate = dayjs(streamLog[0].timestamp);
   const sortedStreamLog = [...streamLog];
   sortedStreamLog.sort(
@@ -41,12 +44,9 @@ const logToChartOptions = (streamLog: StreamLogType[]) => {
         };
     }
   );
-  const xAxisMax = logDate
-    .set('hour', 23)
-    .set('minutes', 59)
-    .set('second', 30)
-    .valueOf();
-  // const logMax = 1440;
+  const xAxisMax = metadata.updating
+    ? dayjs(metadata.serverTime).valueOf()
+    : logDate.endOf('day').valueOf();
 
   const options = {
     exporting: {
