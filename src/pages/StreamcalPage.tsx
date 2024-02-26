@@ -8,10 +8,11 @@ import SkeletonStreamcalPage from '../components/StreamcalPage/SkeletonStreamcal
 import StreamcalHelmet from '../components/StreamcalPage/StreamcalHelmet';
 
 export default function StreamcalPage() {
-  // );
   const location = useLocation();
   const [isInitial, setIsInitial] = useState(true);
-  const [logType, setLogType] = useState('date');
+  const [logType, setLogType] = useState<string | null>(
+    new URLSearchParams(location.search).get('type')
+  );
   const { channelId } = useParams();
   const [targetDate, setTargetDate] = useState<string | null>(
     new URLSearchParams(location.search).get('date')
@@ -19,9 +20,8 @@ export default function StreamcalPage() {
   const { isLoading, data } = useQuery({
     queryKey: [channelId, logType, targetDate],
     queryFn: async () => {
-      if (channelId && targetDate)
+      if (channelId)
         return await getStreamcal(channelId, targetDate, logType);
-      else if (channelId) return await getStreamcal(channelId);
       else throw new Error();
     },
     retry: 1,
@@ -37,6 +37,12 @@ export default function StreamcalPage() {
 
   useEffect(() => {
     if (data) setIsInitial(false);
+    if ((logType || targetDate) && data)
+      window.history.pushState(
+        '',
+        '',
+        `?type=${logType}&date=${targetDate}`
+      );
   }, [data]);
 
   return (

@@ -15,7 +15,7 @@ export default function LoadSelector({
   channelInfo: ChannelInfoType;
   metadata: LogMetadataType;
 }) {
-  const [tab, setTab] = useState('date');
+  const [tab, setTab] = useState(metadata.type);
   const tabChangeHandler = (value: string) => {
     setTab(value);
   };
