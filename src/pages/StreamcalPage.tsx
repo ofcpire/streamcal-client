@@ -38,7 +38,7 @@ export default function StreamcalPage() {
   useEffect(() => {
     if (data) setIsInitial(false);
     if ((logType || targetDate) && data)
-      window.history.pushState(
+      window.history.replaceState(
         '',
         '',
         `?type=${logType}&date=${targetDate}`
