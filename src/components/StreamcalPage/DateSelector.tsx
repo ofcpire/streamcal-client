@@ -18,11 +18,14 @@ export default function DateSelector({
   metadata: LogMetadataType;
 }) {
   const today = dayjs(metadata.serverTime);
-  const [date, setDate] = useState(isoToYMDString(today.toISOString()));
-  const [isChanged, setIsChanged] = useState(false);
+  const [date, setDate] = useState(today.format('YYYY-MM-DD'));
+  const [isChanged, setIsChanged] = useState(
+    isoToYMDString(metadata.targetDate) !== date
+  );
+
   const dateChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDate(e.target.value);
-    setIsChanged(true);
+    setIsChanged(e.target.value !== metadata.targetDate);
   };
 
   const loadByDateHandler = async () => {
@@ -47,7 +50,7 @@ export default function DateSelector({
           onClick={loadByDateHandler}
           className='sc-lightButton disabled:bg-scDarkGreyColor'
           disabled={
-            metadata.type === 'date' ? !isChanged || isLoading : false
+            metadata.type === 'date' || isLoading ? !isChanged : false
           }>
           {isLoading ? '불러오는 중' : '불러오기'}
         </button>

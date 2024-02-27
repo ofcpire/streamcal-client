@@ -22,7 +22,7 @@ export default function MonthSelector({
     year: today.year(),
     month: today.month() + 1,
   });
-  const [isChanged, setIsChanged] = useState(true);
+  const [isChanged, setIsChanged] = useState(false);
   const [yearArray, setYearArray] = useState<number[]>(
     makeYearOptions(channelInfo.createdAt, today.toISOString())
   );
@@ -43,12 +43,21 @@ export default function MonthSelector({
     );
   }, [date.year]);
 
+  useEffect(() => {
+    const targetDate = dayjs(metadata.targetDate);
+    setIsChanged(
+      !(
+        date.year === targetDate.year() &&
+        date.month === targetDate.month() + 1
+      )
+    );
+  }, [date.year, date.month]);
+
   const yearChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setDate((prev) => {
       prev.year = Number(e.target.value);
       return { ...prev };
     });
-    setIsChanged(true);
   };
 
   const monthChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -56,7 +65,6 @@ export default function MonthSelector({
       prev.month = Number(e.target.value);
       return { ...prev };
     });
-    setIsChanged(true);
   };
 
   const loadByDateHandler = async () => {
@@ -94,7 +102,7 @@ export default function MonthSelector({
             onClick={loadByDateHandler}
             className='sc-lightButton disabled:bg-scDarkGreyColor'
             disabled={
-              metadata.type === 'month' ? !isChanged || isLoading : false
+              metadata.type === 'month' || isLoading ? !isChanged : false
             }>
             {isLoading ? '불러오는 중' : '불러오기'}
           </button>
