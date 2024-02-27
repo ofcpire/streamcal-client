@@ -30,7 +30,7 @@ export default function MonthLogViewer({
                 'rounded font-semibold text-sm m-1 p-1 text-center hidden sm:inline-block ' +
                 (day === 'SUN'
                   ? 'text-white bg-scBrightRedColor'
-                  : 'text-brightDarkColor bg-white')
+                  : 'text-scBrightDarkColor bg-white')
               }>
               {day}
             </div>

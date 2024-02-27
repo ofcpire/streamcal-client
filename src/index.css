@@ -12,11 +12,11 @@
 
 @layer components {
   .sc-section {
-    @apply p-2 md:p-4 text-white rounded-lg m-4 bg-brightDarkColor;
+    @apply p-2 md:p-4 text-white rounded-lg m-4 bg-scBrightDarkColor;
   }
 
   .sc-lightArticle {
-    @apply p-2 md:p-4 text-brightDarkColor rounded-lg m-4 bg-scOffWhiteColor align-middle;
+    @apply p-2 md:p-4 text-scBrightDarkColor rounded-lg m-4 bg-scOffWhiteColor align-middle;
   }
 
   .sc-lightArticleSkeleton {

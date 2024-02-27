@@ -38,7 +38,7 @@ export default function MonthLogViewerItem({
           'block border-r sm:border-b sm:border-r-0 text-center rounded-l sm:rounded-bl-none text-sm font-semibold p-2 sm:p-0 min-w-[40px] ' +
           (dateLog.type === 's'
             ? 'text-white bg-scBrightRedColor sm:text-scBrightRedColor sm:bg-white'
-            : 'text-brightDarkColor bg-white')
+            : 'text-scBrightDarkColor bg-white')
         }>
         {dateLog.date}
       </span>

@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className='p-4 md:p-6 text-center md:text-left bg-brightDarkColor text-white flex flex-col items-center md:items-start'>
+    <footer className='p-4 md:p-6 text-center md:text-left bg-scBrightDarkColor text-white flex flex-col items-center md:items-start'>
       <span className='block m-1 flex items-center'>
         2024 STREAMCAL <FaRegCopyright />
       </span>

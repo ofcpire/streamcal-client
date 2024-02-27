@@ -28,7 +28,7 @@ export default function LoadSelector({
         className={
           'rounded-t-lg p-1 md:p-2 px-6 md:px-10  font-semibold ' +
           (tab === 'date'
-            ? 'bg-scOffWhiteColor text-brightDarkColor'
+            ? 'bg-scOffWhiteColor text-scBrightDarkColor'
             : 'bg-scLightGreyColor text-scDarkGreyColor hover:bg-scLightGreyHoverColor [&>*]:opacity-50')
         }>
         <span className=''>일별</span>
@@ -39,7 +39,7 @@ export default function LoadSelector({
         className={
           'rounded-t-lg p-1 md:p-2 px-6 md:px-10 font-semibold ' +
           (tab === 'month'
-            ? 'bg-scOffWhiteColor text-brightDarkColor'
+            ? 'bg-scOffWhiteColor text-scBrightDarkColor'
             : 'bg-scLightGreyColor text-scDarkGreyColor hover:bg-scLightGreyHoverColor [&>*]:opacity-50')
         }>
         <span>월별</span>

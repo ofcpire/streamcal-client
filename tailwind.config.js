@@ -8,8 +8,7 @@ module.exports = {
         doHyeon: ['Do Hyeon'],
       },
       colors: {
-        darkBgColor: '#141517',
-        brightDarkColor: '#1e2022',
+        scBrightDarkColor: '#1e2022',
         scDarkGreyColor: '#6c6c6c',
         scGreenColor: '#00d085',
         scGreenHoverColor: '#00ba77',
