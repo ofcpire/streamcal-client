@@ -1,5 +1,5 @@
 import MonthLogViewer from './MonthLogViewer';
-import MonthLogChart from './MonthLogChart';
+import TimeLogChart from '../TimeLogChart';
 
 export default function MonthLogContainer({
   streamLogArray,
@@ -17,7 +17,7 @@ export default function MonthLogContainer({
         metadata={metadata}
         channelInfo={channelInfo}
       />
-      <MonthLogChart streamLogArray={streamLogArray} metadata={metadata} />
+      <TimeLogChart streamLogArray={streamLogArray} metadata={metadata} />
     </>
   );
 }

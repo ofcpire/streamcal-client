@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import logSorter from '../logSorter';
+import logSorter from './logSorter';
 
 const makeCategoryChartData = (
   metadata: LogMetadataType,
@@ -9,7 +9,9 @@ const makeCategoryChartData = (
   const sortedStreamLog = logSorter([...streamLog]);
   const lastDate = metadata.updating
     ? dayjs(metadata.serverTime)
-    : dayjs(sortedStreamLog[0].timestamp).endOf('month');
+    : metadata.type === 'month'
+    ? dayjs(sortedStreamLog[0].timestamp).endOf('month')
+    : dayjs(sortedStreamLog[0].timestamp).endOf('date');
   for (let i = sortedStreamLog.length - 1; i >= 0; i--) {
     if (sortedStreamLog[i].status !== 'OPEN') continue;
     const logTimestampValue = dayjs(

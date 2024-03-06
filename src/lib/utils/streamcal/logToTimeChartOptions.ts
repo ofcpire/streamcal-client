@@ -1,4 +1,4 @@
-const monthLogToChartOptions = (chartData: CategoryChartDataObjType[]) => {
+const logToTimeChartOptions = (chartData: CategoryChartDataObjType[]) => {
   const options = {
     title: {
       text: null,
@@ -6,6 +6,7 @@ const monthLogToChartOptions = (chartData: CategoryChartDataObjType[]) => {
     chart: {
       type: 'bar',
       borderRadius: '0.5rem',
+      height: `${150 + chartData.length * 30}px`,
     },
     yAxis: {
       title: {
@@ -46,4 +47,4 @@ const monthLogToChartOptions = (chartData: CategoryChartDataObjType[]) => {
   return options;
 };
 
-export default monthLogToChartOptions;
+export default logToTimeChartOptions;

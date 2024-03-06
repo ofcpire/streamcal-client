@@ -5,7 +5,7 @@ import DateLogChart from './Daily/DateLogChart';
 import DateLogViewer from './Daily/DateLogViewer';
 import LoadSelector from './LoadSelector';
 import MonthLogContainer from './Monthly/MonthLogContainer';
-import logSorter from '../../lib/utils/streamcal/logSorter';
+import TimeLogChart from './TimeLogChart';
 
 export default function StreamcalContainer({
   streamcalData,
@@ -50,6 +50,10 @@ export default function StreamcalContainer({
                 metadata={dataHolder.metadata}
               />
               <DateLogViewer streamLogArray={dataHolder.log} />
+              <TimeLogChart
+                metadata={dataHolder.metadata}
+                streamLogArray={dataHolder.log}
+              />
             </>
           ) : dataHolder.metadata.type === 'month' ? (
             <MonthLogContainer
