@@ -22,7 +22,7 @@ function Layout() {
       </Helmet>
       <ScrollToTop>
         <Header />
-        <main className='font-sans antialiased bg-white flex md:max-w min-h-[95vh] justify-center pt-[64px] md:pt-[88px]'>
+        <main className='font-sans antialiased bg-white flex flex-col md:max-w min-h-[95vh] justify-center items-center pt-[64px] md:pt-[88px]'>
           <Outlet />
         </main>
         <Footer />

@@ -1,8 +1,7 @@
 import React from 'react';
-import ChannelList from '../components/channelPage/ChannelList';
-import SkeletonChannelPage from '../components/channelPage/SekeletonChannelPage';
 import { useQuery } from '@tanstack/react-query';
 import getChannelList from '../lib/api/getChannelList';
+import ChannelContainer from '../components/channelPage/ChannelContainer';
 
 export default function ChannelPage() {
   const { isLoading, data } = useQuery({
@@ -14,13 +13,5 @@ export default function ChannelPage() {
     throwOnError: true,
   });
 
-  return (
-    <>
-      {isLoading ? (
-        <SkeletonChannelPage />
-      ) : data ? (
-        <ChannelList channelListData={data} />
-      ) : null}
-    </>
-  );
+  return <ChannelContainer data={data} isLoading={isLoading} />;
 }

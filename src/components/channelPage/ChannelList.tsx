@@ -7,7 +7,6 @@ import {
 } from '../../lib/localStorage/likeChannel';
 import sortChannelList from '../../lib/utils/sortChannelList';
 import { LuArrowUpDown } from 'react-icons/lu';
-import ChannelListSplash from './ChannelListSplash';
 
 export default function ChannelList({
   channelListData,
@@ -22,11 +21,10 @@ export default function ChannelList({
   };
 
   return (
-    <section className='w-screen md:max-w-screen-xl flex flex-col md:justify-center content-middle mx-2 md:mx-4'>
-      <ChannelListSplash />
+    <>
       {getLikeChannel().length > 0 ? (
-        <article className='mb-2'>
-          <h2 className='m-1 text-[16px] font-semibold md:text-lg'>
+        <article className='mb-2 w-full'>
+          <h2 className='m-1 text-[16px] font-semibold md:text-lg '>
             즐겨 찾는 스트리머
           </h2>
           <div>
@@ -67,6 +65,6 @@ export default function ChannelList({
           else return null;
         })}
       </div>
-    </section>
+    </>
   );
 }
