@@ -10,7 +10,7 @@ export default function ChannelContainer({
   data: ChannelInfoType[] | undefined;
 }) {
   return (
-    <section className='w-screen md:max-w-screen-xl flex flex-col md:justify-center md:items-center content-middle px-2 md:px-4 md:py-4'>
+    <section className='w-screen md:max-w-screen-xl flex flex-col md:justify-center md:items-center content-start px-2 md:px-4 md:py-4'>
       <ChannelListSplash />
       {isLoading ? (
         <ChannelListSkeleton />
