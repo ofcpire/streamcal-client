@@ -1,4 +1,6 @@
-import { IoSearch } from 'react-icons/io5';
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { IoSearch, IoCloseCircle } from 'react-icons/io5';
 
 export default function ChannelSearch({
   setChannelList,
@@ -7,14 +9,20 @@ export default function ChannelSearch({
   setChannelList: React.Dispatch<React.SetStateAction<ChannelInfoType[]>>;
   originalChannelListData: ChannelInfoType[];
 }) {
+  const [searchString, setSearchString] = useState('');
+
   const searchInputChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
+    setSearchString(e.target.value);
+  };
+
+  useEffect(() => {
     setChannelList(() => {
-      if (!e.target.value) {
+      if (!searchString) {
         return [...originalChannelListData];
       } else {
-        const testValue = e.target.value.toLowerCase();
+        const testValue = searchString.toLowerCase();
         const filteredChannel = originalChannelListData.filter(
           (channel) => {
             return channel.channelName.toLowerCase().includes(testValue);
@@ -23,6 +31,10 @@ export default function ChannelSearch({
         return filteredChannel;
       }
     });
+  }, [searchString]);
+
+  const cancelSearchHandler = () => {
+    setSearchString('');
   };
 
   return (
@@ -31,8 +43,18 @@ export default function ChannelSearch({
         onChange={searchInputChangeHandler}
         className='flex-grow bg-transparent focus:outline-none min-w-[40px]'
         placeholder=''
+        value={searchString}
       />
-      <IoSearch className='flex-shrink-0 ' />
+      {searchString ? (
+        <button>
+          <IoCloseCircle
+            onClick={cancelSearchHandler}
+            className='flex-shrink-0'
+          />
+        </button>
+      ) : (
+        <IoSearch className='flex-shrink-0 ' />
+      )}
     </div>
   );
 }
