@@ -54,7 +54,7 @@ export default function ChannelList({
           <div className='flex flex-row w-full px-1 md:w-fit justify-between'>
             <button
               onClick={changeSortRuleHandler}
-              className='flex items-center md:ml-8 md:mr-4 whitespace-nowrap'>
+              className='flex items-center md:ml-8 md:mr-4 mr-2 whitespace-nowrap'>
               <LuArrowUpDown />
               {sortRule === 'ab' ? 'ㄱ-ㅎ' : 'ㅎ-ㄱ'}
             </button>
