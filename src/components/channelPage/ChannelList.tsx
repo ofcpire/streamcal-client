@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import ChannelItem from './ChannelItem';
 import {
@@ -7,13 +7,14 @@ import {
 } from '../../lib/localStorage/likeChannel';
 import sortChannelList from '../../lib/utils/sortChannelList';
 import { LuArrowUpDown } from 'react-icons/lu';
-import ChannelListSplash from './ChannelListSplash';
+import ChannelSearch from './ChannelSearch';
 
 export default function ChannelList({
   channelListData,
 }: {
   channelListData: ChannelInfoType[];
 }) {
+  const [channelList, setChannelList] = useState([...channelListData]);
   const [sortRule, setSortRule] = useState('ab');
 
   const changeSortRuleHandler = () => {
@@ -22,11 +23,10 @@ export default function ChannelList({
   };
 
   return (
-    <section className='w-screen md:max-w-screen-xl flex flex-col md:justify-center content-middle mx-2 md:mx-4'>
-      <ChannelListSplash />
+    <>
       {getLikeChannel().length > 0 ? (
-        <article className='mb-2'>
-          <h2 className='m-1 text-[16px] font-semibold md:text-lg'>
+        <article className='md:mb-2 w-full'>
+          <h2 className='m-1 text-[16px] font-semibold md:text-lg '>
             즐겨 찾는 스트리머
           </h2>
           <div>
@@ -46,27 +46,35 @@ export default function ChannelList({
           </div>
         </article>
       ) : null}
-      <h2 className='m-1 text-[16px] font-semibold md:text-lg flex w-full justify-between md:justify-normal'>
-        스트리머 목록
-        <button
-          onClick={changeSortRuleHandler}
-          className='flex items-center md:ml-8 mr-4'>
-          <LuArrowUpDown />
-          {sortRule === 'ab' ? 'ㄱ-ㅎ' : 'ㅎ-ㄱ'}
-        </button>
-      </h2>
-      <div>
-        {sortChannelList(channelListData, sortRule).map((channelInfo) => {
-          if (!isChannelLiked(channelInfo.channelId))
+      <article className='w-full'>
+        <div className='m-1 md:mb-2 text-[16px] font-semibold md:text-lg flex flex-col md:flex-row items-center justify-between md:justify-normal'>
+          <h2 className='flex w-full md:w-fit mb-3 md:mb-0'>
+            스트리머 목록
+          </h2>
+          <div className='flex flex-row w-full px-1 md:w-fit justify-between'>
+            <button
+              onClick={changeSortRuleHandler}
+              className='flex items-center md:ml-8 md:mr-4 mr-2 whitespace-nowrap'>
+              <LuArrowUpDown />
+              {sortRule === 'ab' ? 'ㄱ-ㅎ' : 'ㅎ-ㄱ'}
+            </button>
+            <ChannelSearch
+              setChannelList={setChannelList}
+              originalChannelListData={channelListData}
+            />
+          </div>
+        </div>
+        <div>
+          {sortChannelList(channelList, sortRule).map((channelInfo) => {
             return (
               <ChannelItem
                 channelInfo={channelInfo}
                 key={channelInfo.channelId}
               />
             );
-          else return null;
-        })}
-      </div>
-    </section>
+          })}
+        </div>
+      </article>
+    </>
   );
 }
