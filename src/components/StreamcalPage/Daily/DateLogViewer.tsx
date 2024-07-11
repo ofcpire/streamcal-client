@@ -4,12 +4,12 @@ import DateLogViewerItem from './DateLogViewerItem';
 export default function DateLogViewer({
   streamLogArray,
 }: {
-  streamLogArray: StreamLogType[];
+  streamLogArray: ProcessedStreamLogType[];
 }) {
   return (
     <article className='sc-lightArticle'>
       <h3 className='sc-articleHeader'>스트리밍 기록</h3>
-      {streamLogArray.map((streamLog: StreamLogType) => {
+      {streamLogArray.map((streamLog) => {
         return (
           <DateLogViewerItem streamLog={streamLog} key={streamLog._id} />
         );

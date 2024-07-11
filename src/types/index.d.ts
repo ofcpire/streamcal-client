@@ -23,6 +23,10 @@ interface StreamLogType {
   liveCategoryValue: string;
 }
 
+interface ProcessedStreamLogType extends StreamLogType {
+  changeInfo: string[];
+}
+
 interface LogMetadataType {
   updating: boolean;
   targetDate: string;

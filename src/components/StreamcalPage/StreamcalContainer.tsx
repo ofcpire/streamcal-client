@@ -6,6 +6,7 @@ import DateLogViewer from './Daily/DateLogViewer';
 import LoadSelector from './LoadSelector';
 import MonthLogContainer from './Monthly/MonthLogContainer';
 import TimeLogChart from './TimeLogChart';
+import processLogForViewer from '../../lib/utils/streamcal/daily/processLogForViewer';
 
 export default function StreamcalContainer({
   streamcalData,
@@ -49,7 +50,9 @@ export default function StreamcalContainer({
                 streamLogArray={dataHolder.log}
                 metadata={dataHolder.metadata}
               />
-              <DateLogViewer streamLogArray={dataHolder.log} />
+              <DateLogViewer
+                streamLogArray={processLogForViewer(dataHolder.log)}
+              />
               <TimeLogChart
                 metadata={dataHolder.metadata}
                 streamLogArray={dataHolder.log}
