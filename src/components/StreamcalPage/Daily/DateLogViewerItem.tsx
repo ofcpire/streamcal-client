@@ -8,14 +8,16 @@ export default function DateLogViewerItem({
 }) {
   const boxColorByStatus =
     streamLog.status === 'OPEN'
-      ? 'sc-smInfoBox max-h-full'
+      ? 'sc-smInfoBox'
       : streamLog.status === 'CLOSE'
-      ? 'sc-smGreyInfoBox max-h-full'
-      : 'sc-smRedInfoBox max-h-full';
+      ? 'sc-smGreyInfoBox'
+      : 'sc-smRedInfoBox';
+
+  const changeInfoStyle = boxColorByStatus + ` max-h-full`;
 
   return (
     <div className='m-2 mb-4 flex flex-col'>
-      <h4 className='m-1 ml-0 font-medium text-scGreenColor text-base md:text-xl flex items-center'>
+      <h4 className='m-1 ml-0 font-small text-scGreenColor text-base md:text-lg md:font-bold flex items-center'>
         <span
           className={
             streamLog.status === 'OPEN'
@@ -24,7 +26,7 @@ export default function DateLogViewerItem({
           }>
           {timestampToKo(streamLog.timestamp)}
         </span>
-        <div className={boxColorByStatus}>
+        <div className={changeInfoStyle}>
           {streamLog.status === 'OPEN' || streamLog.status === 'CLOSE'
             ? streamLog.changeInfo.map((e) => {
                 return <div key={e}>{e}</div>;
