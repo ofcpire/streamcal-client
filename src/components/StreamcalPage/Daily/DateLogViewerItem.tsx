@@ -4,7 +4,7 @@ import underBarRemover from '../../../lib/utils/underBarRemover';
 export default function DateLogViewerItem({
   streamLog,
 }: {
-  streamLog: StreamLogType;
+  streamLog: ProcessedStreamLogType;
 }) {
   const boxColorByStatus =
     streamLog.status === 'OPEN'
@@ -13,9 +13,11 @@ export default function DateLogViewerItem({
       ? 'sc-smGreyInfoBox'
       : 'sc-smRedInfoBox';
 
+  const changeInfoStyle = boxColorByStatus + ` max-h-full`;
+
   return (
     <div className='m-2 mb-4 flex flex-col'>
-      <h4 className='m-1 ml-0 font-medium text-scGreenColor text-base md:text-xl flex items-center'>
+      <h4 className='m-1 ml-0 font-small text-scGreenColor text-base md:text-lg md:font-bold flex items-center'>
         <span
           className={
             streamLog.status === 'OPEN'
@@ -24,11 +26,13 @@ export default function DateLogViewerItem({
           }>
           {timestampToKo(streamLog.timestamp)}
         </span>
-        <span className={boxColorByStatus}>
+        <div className={changeInfoStyle}>
           {streamLog.status === 'OPEN' || streamLog.status === 'CLOSE'
-            ? streamLog.status
+            ? streamLog.changeInfo.map((e) => {
+                return <div key={e}>{e}</div>;
+              })
             : '데이터 없음'}
-        </span>
+        </div>
       </h4>
       <div className='ml-2'>
         <div className='flex mb-1'>
