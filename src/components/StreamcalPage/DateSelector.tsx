@@ -40,7 +40,7 @@ export default function DateSelector({
       <div className='date-input-wrapper flex'>
         <input
           value={date}
-          className='rounded-lg p-1 mr-2'
+          className='dark:bg-scDarkColor rounded-lg p-1 mr-2'
           type='date'
           onChange={dateChangeHandler}
           id='streamcal-date'

@@ -28,10 +28,10 @@ export default function LoadSelector({
         className={
           'rounded-t-lg p-1 md:p-2 px-6 md:px-10  font-semibold ' +
           (tab === 'date'
-            ? 'bg-scOffWhiteColor text-scBrightDarkColor'
-            : 'bg-scLightGreyColor text-scDarkGreyColor hover:bg-scLightGreyHoverColor [&>*]:opacity-50')
+            ? 'bg-scOffWhiteColor dark:bg-scBrightDarkColor text-scBrightDarkColor'
+            : 'bg-scLightGreyColor text-scDarkGreyColor dark:bg-scDarkColor hover:bg-scLightGreyHoverColor dark:hover:bg-scBrightDarkColor [&>*]:opacity-50')
         }>
-        <span className=''>일별</span>
+        <span className='sc-darkModeText'>일별</span>
       </button>
       <button
         onClick={() => tabChangeHandler('month')}
@@ -39,10 +39,10 @@ export default function LoadSelector({
         className={
           'rounded-t-lg p-1 md:p-2 px-6 md:px-10 font-semibold ' +
           (tab === 'month'
-            ? 'bg-scOffWhiteColor text-scBrightDarkColor'
-            : 'bg-scLightGreyColor text-scDarkGreyColor hover:bg-scLightGreyHoverColor [&>*]:opacity-50')
+            ? 'bg-scOffWhiteColor text-scBrightDarkColor dark:bg-scBrightDarkColor'
+            : 'bg-scLightGreyColor text-scDarkGreyColor dark:bg-scDarkColor hover:bg-scLightGreyHoverColor dark:hover:bg-scBrightDarkColor [&>*]:opacity-50')
         }>
-        <span>월별</span>
+        <span className='sc-darkModeText'>월별</span>
       </button>
       {tab === 'date' && (
         <DateSelector

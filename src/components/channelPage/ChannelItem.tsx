@@ -12,7 +12,7 @@ export default function ChannelItem({
   };
   return (
     <div
-      className='sc-lightArticle border block m-2 mt-4 md:mt-2 ml-2 cursor-pointer font-medium color-scBrightDarkColor md:inline-block p-4 md:p-3 hover:bg-scLightGreyColor'
+      className='sc-lightArticle border block m-2 mt-4 md:mt-2 ml-2 cursor-pointer font-medium color-scBrightDarkColor md:inline-block p-4 md:p-3 hover:bg-scLightGreyColor dark:hover:bg-scDarkColor dark:border-transparent'
       onClick={navToCalHandler}>
       {channelInfo.channelName}
     </div>

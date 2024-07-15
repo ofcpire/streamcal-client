@@ -1,10 +1,13 @@
+import React, { useEffect, useContext } from 'react';
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
 import logToChartOptions from '../../../lib/utils/streamcal/daily/logToChartOptions';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import timeline from 'highcharts/modules/timeline';
 import dayjs from 'dayjs';
+import { DarkModeContext } from '../../global/DarkModeWrapper';
 import 'dayjs/locale/ko';
+
 dayjs.locale('ko');
 
 export default function DateLogChart({
@@ -17,6 +20,12 @@ export default function DateLogChart({
   HighchartsExporting(Highcharts);
   timeline(Highcharts);
 
+  const { isDarkMode } = useContext(DarkModeContext);
+
+  useEffect(() => {
+    console.log(`is changed: ${isDarkMode}`);
+  }, [isDarkMode]);
+
   return (
     <article className='sc-lightArticle'>
       <h3 className='sc-articleHeader mb-0 flex justify-between'>
@@ -28,7 +37,7 @@ export default function DateLogChart({
       <div className='rounded-xl width-max p-2 md:p-4'>
         <HighchartsReact
           highcharts={Highcharts}
-          options={logToChartOptions(streamLogArray, metadata)}
+          options={logToChartOptions(streamLogArray, metadata, isDarkMode)}
         />
       </div>
     </article>

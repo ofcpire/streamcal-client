@@ -30,7 +30,7 @@ export default function MonthLogViewer({
                 'rounded font-semibold text-sm m-1 p-1 text-center hidden sm:inline-block ' +
                 (day === 'SUN'
                   ? 'text-white bg-scBrightRedColor'
-                  : 'text-scBrightDarkColor bg-white')
+                  : 'text-scBrightDarkColor dark:text-scOffWhiteColor bg-white dark:bg-scDarkColor')
               }>
               {day}
             </div>
@@ -40,7 +40,7 @@ export default function MonthLogViewer({
           return (
             <div
               key={ele}
-              className='rounded bg-scLightGreyColor m-1 hidden sm:block'>
+              className='rounded bg-scLightGreyColor dark:bg-scDarkColor m-1 hidden sm:block'>
               <span className='hidden'>{ele}</span>
             </div>
           );
@@ -59,7 +59,7 @@ export default function MonthLogViewer({
           return (
             <div
               key={ele}
-              className='rounded bg-scLightGreyColor m-1 hidden sm:block'>
+              className='rounded bg-scLightGreyColor dark:bg-scDarkColor m-1 hidden sm:block'>
               <span className='hidden'>{ele}</span>
             </div>
           );

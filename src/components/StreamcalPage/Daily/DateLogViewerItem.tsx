@@ -17,7 +17,7 @@ export default function DateLogViewerItem({
 
   return (
     <div className='m-2 mb-4 flex flex-col'>
-      <h4 className='m-1 ml-0 font-small text-scGreenColor text-base md:text-lg md:font-bold flex items-center'>
+      <h4 className='m-1 ml-0 font-small text-scGreenColor dark:text-scDarkModeGreenColor text-base md:text-lg md:font-bold flex items-center'>
         <span
           className={
             streamLog.status === 'OPEN'
