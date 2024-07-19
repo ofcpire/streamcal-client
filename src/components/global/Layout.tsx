@@ -5,6 +5,7 @@ import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { DarkModeWrapper } from './DarkModeWrapper';
+import { ToastProvider } from './ToastProvider';
 
 function Layout() {
   return (
@@ -23,11 +24,13 @@ function Layout() {
       </Helmet>
       <ScrollToTop>
         <DarkModeWrapper>
-          <Header />
-          <main className='font-sans antialiased bg-white dark:bg-scDeepDarkColor flex flex-col md:max-w min-h-[95vh] justify-start items-center pt-[64px] md:pt-[88px]'>
-            <Outlet />
-          </main>
-          <Footer />
+          <ToastProvider>
+            <Header />
+            <main className='font-sans antialiased bg-white dark:bg-scDeepDarkColor flex flex-col md:max-w min-h-[95vh] justify-start items-center pt-[64px] md:pt-[88px]'>
+              <Outlet />
+            </main>
+            <Footer />
+          </ToastProvider>
         </DarkModeWrapper>
       </ScrollToTop>
     </>
