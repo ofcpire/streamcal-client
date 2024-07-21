@@ -22,10 +22,10 @@ export default function ChannelInfo({
   const clickLikeHandler = () => {
     if (isLiked) {
       removeLikeChannel(channelInfo.channelId);
-      addNewToast(`${channelInfo.channelName} 즐겨찾기 삭제!`);
+      addNewToast(`${channelInfo.channelName} 즐겨찾기 삭제됨`, 'ok');
     } else {
       addNewLikeChannel(channelInfo.channelId);
-      addNewToast(`${channelInfo.channelName} 즐겨찾기 완료!`);
+      addNewToast(`${channelInfo.channelName} 즐겨찾기 완료!`, 'ok');
     }
     setIsLiked(isChannelLiked(channelInfo.channelId));
   };
