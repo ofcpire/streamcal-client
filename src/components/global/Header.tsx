@@ -8,7 +8,7 @@ export default function Header() {
     nav('');
   };
   return (
-    <header className='flex p-4 md:p-6 fixed w-screen z-50 sc-darkModeGreenBg justify-center md:justify-start content-center md:justify-right'>
+    <header className='flex p-4 md:p-6 fixed w-screen z-50 sc-darkModeGreenBg justify-center md:justify-start content-center md:justify-right min-w-[320px]'>
       <h1 className=''>
         <button
           onClick={goToListHandler}

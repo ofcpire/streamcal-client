@@ -25,11 +25,13 @@ function Layout() {
       <ScrollToTop>
         <DarkModeWrapper>
           <ToastProvider>
-            <Header />
-            <main className='font-sans antialiased bg-white dark:bg-scDeepDarkColor flex flex-col md:max-w min-h-[95vh] justify-start items-center pt-[64px] md:pt-[88px]'>
-              <Outlet />
-            </main>
-            <Footer />
+            <div className='min-w-[310px]'>
+              <Header />
+              <main className='font-sans antialiased bg-white dark:bg-scDeepDarkColor flex flex-col md:max-w min-h-[95vh] justify-start items-center pt-[64px] md:pt-[88px]'>
+                <Outlet />
+              </main>
+              <Footer />
+            </div>
           </ToastProvider>
         </DarkModeWrapper>
       </ScrollToTop>
