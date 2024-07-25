@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DarkModeContext } from './DarkModeWrapper';
+import { DarkModeContext } from './DarkModeProvider';
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 
 export default function DarkModeToggle() {

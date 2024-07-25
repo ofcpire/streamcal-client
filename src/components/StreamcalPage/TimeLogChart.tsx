@@ -4,7 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import HighchartsExporting from 'highcharts/modules/exporting';
 import makeCategoryChartData from '../../lib/utils/streamcal/makeCategoryChartData';
 import logToTimeChartOptions from '../../lib/utils/streamcal/logToTimeChartOptions';
-import { DarkModeContext } from '../global/DarkModeWrapper';
+import { DarkModeContext } from '../global/DarkModeProvider';
 
 export default function TimeLogChart({
   streamLogArray,

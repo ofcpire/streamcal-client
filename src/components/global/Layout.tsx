@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
-import { DarkModeWrapper } from './DarkModeWrapper';
+import { DarkModeProvider } from './DarkModeProvider';
 import { ToastProvider } from './ToastProvider';
 
 function Layout() {
@@ -23,7 +23,7 @@ function Layout() {
         />
       </Helmet>
       <ScrollToTop>
-        <DarkModeWrapper>
+        <DarkModeProvider>
           <ToastProvider>
             <div className='min-w-[310px]'>
               <Header />
@@ -33,7 +33,7 @@ function Layout() {
               <Footer />
             </div>
           </ToastProvider>
-        </DarkModeWrapper>
+        </DarkModeProvider>
       </ScrollToTop>
     </>
   );

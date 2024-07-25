@@ -5,7 +5,7 @@ export const DarkModeContext = createContext({
   darkModeSelector: () => {},
 });
 
-export function DarkModeWrapper({
+export function DarkModeProvider({
   children,
 }: {
   children: React.ReactNode;

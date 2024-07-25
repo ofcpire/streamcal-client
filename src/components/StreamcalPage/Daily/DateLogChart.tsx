@@ -5,7 +5,7 @@ import logToChartOptions from '../../../lib/utils/streamcal/daily/logToChartOpti
 import HighchartsExporting from 'highcharts/modules/exporting';
 import timeline from 'highcharts/modules/timeline';
 import dayjs from 'dayjs';
-import { DarkModeContext } from '../../global/DarkModeWrapper';
+import { DarkModeContext } from '../../global/DarkModeProvider';
 import 'dayjs/locale/ko';
 
 dayjs.locale('ko');
