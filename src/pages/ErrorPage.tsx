@@ -10,13 +10,13 @@ export default function ErrorPage() {
   return (
     <>
       <Header />
-      <main className='flex w-screen h-screen justify-center'>
+      <main className='flex w-screen h-screen justify-center bg-white dark:bg-scDarkColor'>
         <section className='flex flex-col justify-center w-auto'>
-          <h1 className='text-2xl'>잘못된 요청입니다.</h1>
+          <h1 className='text-2xl'>페이지를 찾을 수 없습니다.</h1>
           <button
             onClick={navToIndex}
             className='sc-lightButton m-4 text-xl'>
-            돌아가기
+            채널 목록으로 돌아가기
           </button>
         </section>
       </main>
