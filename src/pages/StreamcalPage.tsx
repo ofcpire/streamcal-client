@@ -10,7 +10,8 @@ import { ErrorModalContext } from '../components/global/ErrorModalProvider';
 import axios from 'axios';
 
 export default function StreamcalPage() {
-  const { makeErrorModal } = useContext(ErrorModalContext);
+  const { makeErrorModal, closeErrorModal } =
+    useContext(ErrorModalContext);
   const location = useLocation();
   const [isInitial, setIsInitial] = useState(true);
   const [logType, setLogType] = useState<string | null>(
@@ -25,7 +26,9 @@ export default function StreamcalPage() {
     queryFn: async () => {
       if (!channelId) throw new Error();
       try {
-        return await getStreamcal(channelId, targetDate, logType);
+        const data = await getStreamcal(channelId, targetDate, logType);
+        closeErrorModal();
+        return data;
       } catch (err) {
         if (axios.isAxiosError(err)) {
           makeErrorModal(err, refetch);

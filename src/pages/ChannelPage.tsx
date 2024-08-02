@@ -6,12 +6,15 @@ import { ErrorModalContext } from '../components/global/ErrorModalProvider';
 import axios from 'axios';
 
 export default function ChannelPage() {
-  const { makeErrorModal } = useContext(ErrorModalContext);
+  const { makeErrorModal, closeErrorModal } =
+    useContext(ErrorModalContext);
   const { isLoading, data, refetch } = useQuery({
     queryKey: ['getChannelList'],
     queryFn: async () => {
       try {
-        return await getChannelList();
+        const data = await getChannelList();
+        closeErrorModal();
+        return data;
       } catch (err) {
         if (axios.isAxiosError(err)) {
           makeErrorModal(err, refetch);
