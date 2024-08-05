@@ -22,10 +22,6 @@ export default function DateLogChart({
 
   const { isDarkMode } = useContext(DarkModeContext);
 
-  useEffect(() => {
-    console.log(`is changed: ${isDarkMode}`);
-  }, [isDarkMode]);
-
   return (
     <article className='sc-lightArticle'>
       <h3 className='sc-articleHeader mb-0 flex justify-between'>

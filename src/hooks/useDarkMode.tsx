@@ -14,7 +14,6 @@ export default function useDarkMode() {
     } else {
       document.documentElement.classList.remove('dark');
     }
-    console.log(isDarkMode);
   }, [isDarkMode]);
 
   const darkModeSelector = () => {
