@@ -5,8 +5,10 @@ dayjs.locale('ko');
 
 const logToChartOptions = (
   streamLog: StreamLogType[],
-  metadata: LogMetadataType
+  metadata: LogMetadataType,
+  isDarkMode: boolean
 ) => {
+  const textColor = isDarkMode ? '#ffffff' : '#000000';
   let logDate = dayjs(streamLog[0].timestamp);
   const sortedStreamLog = [...streamLog];
   sortedStreamLog.sort(
@@ -59,6 +61,7 @@ const logToChartOptions = (
       zoomType: 'x',
       type: 'timeline',
       borderRadius: '0.5rem',
+      backgroundColor: isDarkMode ? '#18191a' : '#ffffff',
     },
     title: {
       text: null,
@@ -71,6 +74,9 @@ const logToChartOptions = (
       height: '51%',
       type: 'datetime',
       visible: true,
+      labels: {
+        style: { color: textColor },
+      },
     },
     yAxis: {
       gridLineColor: '#cccccc',

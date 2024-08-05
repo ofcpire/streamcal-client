@@ -26,7 +26,7 @@ export default function ChannelList({
     <>
       {getLikeChannel().length > 0 ? (
         <article className='md:mb-2 w-full'>
-          <h2 className='m-1 text-[16px] font-semibold md:text-lg '>
+          <h2 className='sc-darkModeText m-1 text-[16px] font-semibold md:text-lg '>
             즐겨 찾는 스트리머
           </h2>
           <div>
@@ -48,13 +48,13 @@ export default function ChannelList({
       ) : null}
       <article className='w-full'>
         <div className='m-1 md:mb-2 text-[16px] font-semibold md:text-lg flex flex-col md:flex-row items-center justify-between md:justify-normal'>
-          <h2 className='flex w-full md:w-fit mb-3 md:mb-0'>
+          <h2 className='sc-darkModeText flex w-full md:w-fit mb-3 md:mb-0'>
             스트리머 목록
           </h2>
           <div className='flex flex-row w-full px-1 md:w-fit justify-between'>
             <button
               onClick={changeSortRuleHandler}
-              className='flex items-center md:ml-8 md:mr-4 mr-2 whitespace-nowrap'>
+              className='sc-darkModeText flex items-center md:ml-8 md:mr-4 mr-2 whitespace-nowrap'>
               <LuArrowUpDown />
               {sortRule === 'ab' ? 'ㄱ-ㅎ' : 'ㅎ-ㄱ'}
             </button>

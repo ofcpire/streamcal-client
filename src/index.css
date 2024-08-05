@@ -16,7 +16,7 @@
   }
 
   .sc-lightArticle {
-    @apply p-2 md:p-4 text-scBrightDarkColor rounded-lg m-4 bg-scOffWhiteColor align-middle;
+    @apply p-2 md:p-4 text-scBrightDarkColor rounded-lg m-4 bg-scOffWhiteColor dark:bg-scBrightDarkColor dark:text-scOffWhiteColor align-middle;
   }
 
   .sc-lightArticleSkeleton {
@@ -28,11 +28,11 @@
   }
 
   .sc-lightButton {
-    @apply p-1 px-2 text-white rounded-lg bg-scGreenColor font-medium text-center align-middle hover:bg-scGreenHoverColor min-h-[40px] min-w-[40px];
+    @apply p-1 px-2 text-white rounded-lg sc-darkModeGreenBg font-medium text-center align-middle hover:bg-scGreenHoverColor min-h-[40px] min-w-[40px];
   }
 
   .sc-smInfoBox {
-    @apply p-1 mr-2 text-white text-xs font-medium text-center rounded-lg bg-scGreenColor text-nowrap max-h-6;
+    @apply p-1 mr-2 text-white text-xs font-medium text-center rounded-lg bg-scGreenColor dark:bg-scDarkModeGreenColor text-nowrap max-h-6;
   }
 
   .sc-smRedInfoBox {
@@ -41,5 +41,13 @@
 
   .sc-smGreyInfoBox {
     @apply sc-smInfoBox bg-scDarkGreyColor;
+  }
+
+  .sc-darkModeText {
+    @apply dark:text-scOffWhiteColor
+  }
+
+  .sc-darkModeGreenBg {
+    @apply bg-scGreenColor dark:bg-scDarkModeGreenColor
   }
 }

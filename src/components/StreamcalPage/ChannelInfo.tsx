@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   addNewLikeChannel,
   isChannelLiked,
@@ -8,6 +7,7 @@ import {
 import { FaRegHeart, FaHeart, FaHeartBroken } from 'react-icons/fa';
 import { RxOpenInNewWindow } from 'react-icons/rx';
 import isoToYMDString from '../../lib/utils/isoToYMDString';
+import { ToastContext } from '../global/ToastProvider';
 
 export default function ChannelInfo({
   channelInfo,
@@ -17,12 +17,15 @@ export default function ChannelInfo({
   const [isLiked, setIsLiked] = useState<boolean>(
     isChannelLiked(channelInfo.channelId)
   );
+  const { addNewToast } = useContext(ToastContext);
 
   const clickLikeHandler = () => {
     if (isLiked) {
       removeLikeChannel(channelInfo.channelId);
+      addNewToast(`${channelInfo.channelName} 즐겨찾기 삭제됨`, 'ok');
     } else {
       addNewLikeChannel(channelInfo.channelId);
+      addNewToast(`${channelInfo.channelName} 즐겨찾기 완료!`, 'ok');
     }
     setIsLiked(isChannelLiked(channelInfo.channelId));
   };
@@ -45,14 +48,14 @@ export default function ChannelInfo({
           <RxOpenInNewWindow />
         </button>
         <div className='flex flex-wrap'>
-          <span className='m-2 font-semibold text-scDarkGreyColor'>
+          <span className='m-2 font-semibold text-scDarkGreyColor dark:text-scOffWhiteColor'>
             {isLiked ? '즐겨찾기 중!' : '즐겨찾기'}
           </span>
           <button
             onClick={clickLikeHandler}
             className={
               isLiked
-                ? 'group sc-lightButton flex justify-center items-center bg-scGreenColor hover:bg-scRedColor'
+                ? 'group sc-lightButton flex justify-center items-center bg-scGreenColor dark:bg-scDarkModeGreenColor hover:bg-scRedColor'
                 : 'group sc-lightButton flex justify-center items-center'
             }>
             <span className='group-hover:hidden text-xl'>

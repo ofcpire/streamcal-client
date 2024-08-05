@@ -38,7 +38,7 @@ export default function ChannelSearch({
   };
 
   return (
-    <div className='sc-lightArticle p-2 m-0 bg-scOffWhiteColor flex flex-row items-center min-w-[50px]'>
+    <div className='sc-lightArticle p-2 m-0 bg-scOffWhiteColor dark:bg-scBrightDarkColor flex flex-row items-center min-w-[50px]'>
       <input
         onChange={searchInputChangeHandler}
         className='flex-grow bg-transparent focus:outline-none min-w-[40px]'

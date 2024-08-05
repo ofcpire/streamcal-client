@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import StreamcalContainer from '../components/StreamcalPage/StreamcalContainer';
@@ -6,8 +6,12 @@ import { useQuery } from '@tanstack/react-query';
 import getStreamcal from '../lib/api/getStreamcal';
 import SkeletonStreamcalPage from '../components/StreamcalPage/SkeletonStreamcalPage';
 import StreamcalHelmet from '../components/StreamcalPage/StreamcalHelmet';
+import { ErrorModalContext } from '../components/global/ErrorModalProvider';
+import axios from 'axios';
 
 export default function StreamcalPage() {
+  const { makeErrorModal, closeErrorModal } =
+    useContext(ErrorModalContext);
   const location = useLocation();
   const [isInitial, setIsInitial] = useState(true);
   const [logType, setLogType] = useState<string | null>(
@@ -17,16 +21,25 @@ export default function StreamcalPage() {
   const [targetDate, setTargetDate] = useState<string | null>(
     new URLSearchParams(location.search).get('date')
   );
-  const { isLoading, data } = useQuery({
+  const { isLoading, data, refetch } = useQuery({
     queryKey: [channelId, logType, targetDate],
     queryFn: async () => {
-      if (channelId)
-        return await getStreamcal(channelId, targetDate, logType);
-      else throw new Error();
+      if (!channelId) throw new Error();
+      try {
+        const data = await getStreamcal(channelId, targetDate, logType);
+        closeErrorModal();
+        return data;
+      } catch (err) {
+        if (axios.isAxiosError(err)) {
+          makeErrorModal(err, refetch);
+          return Promise.resolve(undefined);
+        } else throw new Error(err as string);
+      }
     },
     retry: 1,
-    throwOnError: true,
+    throwOnError: false,
   });
+
   const changeLogDate = (date: string) => {
     setTargetDate(date);
   };
@@ -47,7 +60,7 @@ export default function StreamcalPage() {
 
   return (
     <>
-      {isLoading && isInitial ? (
+      {isLoading && isInitial && data ? (
         <SkeletonStreamcalPage />
       ) : (
         <>

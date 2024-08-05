@@ -75,11 +75,11 @@ export default function MonthSelector({
 
   return (
     <>
-      <article className='sc-lightArticle m-0 flex items-center justify-between md:justify-start flex-wrap rounded-tl-none'>
+      <article className='sc-darkModeText sc-lightArticle m-0 flex items-center justify-between md:justify-start flex-wrap rounded-tl-none'>
         <h3 className='sc-articleHeader my-0 mr-4'>기간 선택</h3>
         <div className='date-input-wrapper flex'>
           <select
-            className='rounded-lg p-1 mr-2'
+            className='rounded-lg p-1 mr-2 dark:bg-scDarkColor'
             onChange={yearChangeHandler}
             value={date.year}>
             {yearArray.map((y) => (
@@ -89,7 +89,7 @@ export default function MonthSelector({
             ))}
           </select>
           <select
-            className='rounded-lg p-1 mr-2'
+            className='rounded-lg p-1 mr-2 dark:bg-scDarkColor'
             onChange={monthChangeHandler}
             value={date.month}>
             {monthArray.map((m) => (
