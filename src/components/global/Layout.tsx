@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Outlet, useRouteError } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet-async';
 import { DarkModeProvider } from './DarkModeProvider';
 import { ToastProvider } from './ToastProvider';
 import { ErrorModalProvider } from './ErrorModalProvider';
-import ErrorPage from '../../pages/ErrorPage';
+const ErrorPage = lazy(() => import('../../pages/ErrorPage'));
 
 function Layout() {
   const error = useRouteError();
@@ -32,7 +32,13 @@ function Layout() {
               <div className='min-w-[310px]'>
                 <Header />
                 <main className='font-sans antialiased bg-white dark:bg-scDeepDarkColor flex flex-col md:max-w min-h-[95vh] justify-start items-center pt-[64px] md:pt-[88px]'>
-                  {error ? <ErrorPage /> : <Outlet />}
+                  {error ? (
+                    <Suspense>
+                      <ErrorPage />
+                    </Suspense>
+                  ) : (
+                    <Outlet />
+                  )}
                 </main>
                 <Footer />
               </div>

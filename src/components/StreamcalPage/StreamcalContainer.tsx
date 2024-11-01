@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy } from 'react';
 import { useState } from 'react';
 import ChannelInfo from './ChannelInfo';
 import DateLogChart from './Daily/DateLogChart';
 import DateLogViewer from './Daily/DateLogViewer';
 import LoadSelector from './LoadSelector';
-import MonthLogContainer from './Monthly/MonthLogContainer';
 import TimeLogChart from './TimeLogChart';
 import processLogForViewer from '../../lib/utils/streamcal/daily/processLogForViewer';
+const MonthLogContainer = lazy(
+  () => import('./Monthly/MonthLogContainer')
+);
 
 export default function StreamcalContainer({
   streamcalData,
