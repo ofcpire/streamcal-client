@@ -17,9 +17,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "GENERATE_SOURCEMAP=false vite build"
   },
   "eslintConfig": {
     "extends": [
