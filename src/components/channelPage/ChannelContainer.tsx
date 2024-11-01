@@ -14,7 +14,7 @@ export default function ChannelContainer({
       <ChannelListSplash />
       {isLoading ? (
         <ChannelListSkeleton />
-      ) : data ? (
+      ) : data && Array.isArray(data) ? (
         <ChannelList channelListData={data} />
       ) : null}
     </section>
