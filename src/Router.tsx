@@ -1,8 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './components/global/Layout';
-const StreamcalPage = lazy(() => import('./pages/StreamcalPage'));
-const ChannelPage = lazy(() => import('./pages/ChannelPage'));
+import StreamcalPage from './pages/StreamcalPage';
+import ChannelPage from './pages/ChannelPage';
 const ErrorPage = lazy(() => import('./pages/ErrorPage'));
 
 const router = createBrowserRouter([
@@ -12,19 +12,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: (
-          <Suspense>
-            <ChannelPage />
-          </Suspense>
-        ),
+        element: <ChannelPage />,
       },
       {
         path: '/zzk/:channelId',
-        element: (
-          <Suspense>
-            <StreamcalPage />
-          </Suspense>
-        ),
+        element: <StreamcalPage />,
       },
     ],
     errorElement: (
