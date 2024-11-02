@@ -1,6 +1,7 @@
-import ChannelList from './ChannelList';
+import React, { Suspense, lazy } from 'react';
 import ChannelListSplash from './ChannelListSplash';
 import ChannelListSkeleton from './ChannelListSkeleton';
+const ChannelList = lazy(() => import('./ChannelList'));
 
 export default function ChannelContainer({
   isLoading,
@@ -15,7 +16,9 @@ export default function ChannelContainer({
       {isLoading ? (
         <ChannelListSkeleton />
       ) : data && Array.isArray(data) ? (
-        <ChannelList channelListData={data} />
+        <Suspense fallback={<ChannelListSkeleton />}>
+          <ChannelList channelListData={data} />
+        </Suspense>
       ) : null}
     </section>
   );

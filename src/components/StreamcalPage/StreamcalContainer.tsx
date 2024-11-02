@@ -1,11 +1,12 @@
-import React, { useEffect, lazy } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { useState } from 'react';
-import ChannelInfo from './ChannelInfo';
-import DateLogChart from './Daily/DateLogChart';
-import DateLogViewer from './Daily/DateLogViewer';
-import LoadSelector from './LoadSelector';
-import TimeLogChart from './TimeLogChart';
 import processLogForViewer from '../../lib/utils/streamcal/daily/processLogForViewer';
+import SkeletonStreamcalPage from './SkeletonStreamcalPage';
+const ChannelInfo = lazy(() => import('./ChannelInfo'));
+const DateLogChart = lazy(() => import('./Daily/DateLogChart'));
+const DateLogViewer = lazy(() => import('./Daily/DateLogViewer'));
+const TimeLogChart = lazy(() => import('./TimeLogChart'));
+const LoadSelector = lazy(() => import('./LoadSelector'));
 const MonthLogContainer = lazy(
   () => import('./Monthly/MonthLogContainer')
 );
@@ -30,7 +31,7 @@ export default function StreamcalContainer({
   }, [streamcalData]);
 
   return (
-    <>
+    <Suspense fallback={<SkeletonStreamcalPage />}>
       {dataHolder && (
         <section className='w-screen md:max-w-screen-xl md:mx-4'>
           <ChannelInfo channelInfo={dataHolder.channelInfo} />
@@ -61,14 +62,22 @@ export default function StreamcalContainer({
               />
             </>
           ) : dataHolder.metadata.type === 'month' ? (
-            <MonthLogContainer
-              streamLogArray={dataHolder.log}
-              metadata={dataHolder.metadata}
-              channelInfo={dataHolder.channelInfo}
-            />
+            <Suspense
+              fallback={
+                <>
+                  <article className='sc-lightArticleSkeleton'></article>
+                  <article className='sc-lightArticleSkeleton'></article>
+                </>
+              }>
+              <MonthLogContainer
+                streamLogArray={dataHolder.log}
+                metadata={dataHolder.metadata}
+                channelInfo={dataHolder.channelInfo}
+              />
+            </Suspense>
           ) : null}
         </section>
       )}
-    </>
+    </Suspense>
   );
 }
