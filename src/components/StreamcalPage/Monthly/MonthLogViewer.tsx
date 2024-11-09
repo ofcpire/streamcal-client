@@ -31,7 +31,8 @@ export default function MonthLogViewer({
                 (day === 'SUN'
                   ? 'text-white bg-scBrightRedColor'
                   : 'text-scBrightDarkColor dark:text-scOffWhiteColor bg-white dark:bg-scDarkColor')
-              }>
+              }
+              key={day}>
               {day}
             </div>
           );

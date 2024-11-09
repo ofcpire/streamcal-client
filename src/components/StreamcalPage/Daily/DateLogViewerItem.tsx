@@ -1,11 +1,13 @@
 import timestampToKo from '../../../lib/utils/timestampToKo';
 import underBarRemover from '../../../lib/utils/underBarRemover';
+import { useNavigate } from 'react-router-dom';
 
 export default function DateLogViewerItem({
   streamLog,
 }: {
   streamLog: ProcessedStreamLogType;
 }) {
+  const navigate = useNavigate();
   const boxColorByStatus =
     streamLog.status === 'OPEN'
       ? 'sc-smInfoBox'
@@ -14,6 +16,10 @@ export default function DateLogViewerItem({
       : 'sc-smRedInfoBox';
 
   const changeInfoStyle = boxColorByStatus + ` max-h-full`;
+  const navToCategoryDetail = () => {
+    if (streamLog.liveCategory)
+      navigate(`/category/${streamLog.liveCategory}`);
+  };
 
   return (
     <div className='m-2 mb-4 flex flex-col'>
@@ -34,10 +40,12 @@ export default function DateLogViewerItem({
             : '데이터 없음'}
         </div>
       </h4>
-      <div className='ml-2'>
-        <div className='flex mb-1'>
+      <div>
+        <div className='flex mb-1 items-center'>
           <span className={boxColorByStatus}>카테고리</span>
-          <span className='font-semibold'>
+          <span
+            className='font-semibold cursor-pointer hover:bg-scLightGreyColor px-1 rounded-md'
+            onClick={navToCategoryDetail}>
             {streamLog.liveCategory
               ? `${streamLog.liveCategoryValue} (${underBarRemover(
                   streamLog.liveCategory

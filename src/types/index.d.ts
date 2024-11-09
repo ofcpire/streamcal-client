@@ -39,3 +39,25 @@ interface CategoryChartDataObjType {
   liveCategoryValue: string;
   y: number;
 }
+
+interface CategoryListDataType {
+  metadata: {
+    documentCount: number;
+    page: number;
+    pageSize: number;
+  };
+  categoryList: LiveCategoryType[];
+}
+
+interface LiveCategoryType {
+  lastPlayedAt: string;
+  liveCategory: string;
+  liveCategoryValue: string;
+  players?: LiveCategoryPlayerObjType[];
+}
+
+interface LiveCategoryPlayerObjType {
+  channelId: string;
+  playedAt: string;
+  channelInfo?: ChannelInfoType;
+}

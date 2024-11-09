@@ -49,7 +49,9 @@ export default function MonthLogViewerItem({
         ) : null}
         {categories.map((log, i) => {
           return (
-            <span className='inline-block text-xs text-wrap pr-1 sm:pr-0'>
+            <span
+              className='inline-block text-xs text-wrap pr-1 sm:pr-0'
+              key={log}>
               {log}
               {i !== categories.length - 1 ? (
                 <span className='sm:hidden'>,</span>

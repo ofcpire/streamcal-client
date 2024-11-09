@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { Outlet, useRouteError } from 'react-router-dom';
+import { Outlet, useLocation, useRouteError } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
@@ -10,10 +10,12 @@ import { ErrorModalProvider } from './ErrorModalProvider';
 const ErrorPage = lazy(() => import('../../pages/ErrorPage'));
 
 function Layout() {
+  const location = useLocation();
   const error = useRouteError();
   return (
     <>
       <Helmet>
+        {location.pathname}
         <title>STREAMCAL</title>
         <meta property='og:title' content='STREAMCAL' />
         <meta
