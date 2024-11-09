@@ -58,6 +58,7 @@ export default function CategoryListPage() {
   };
   const dispatchKeyword = (keyword: string) => {
     setSearchKeyword(keyword);
+    setPage(1);
   };
 
   return (
