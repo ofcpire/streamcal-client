@@ -60,19 +60,13 @@ export default function StreamcalPage() {
 
   return (
     <>
-      {isLoading && isInitial && data ? (
-        <SkeletonStreamcalPage />
-      ) : (
-        <>
-          <StreamcalContainer
-            isLoading={isLoading}
-            streamcalData={data}
-            changeLogDate={changeLogDate}
-            changeLogType={changeLogType}
-          />
-          <StreamcalHelmet channelInfo={data?.channelInfo} />
-        </>
-      )}
+      <StreamcalContainer
+        isLoading={isLoading}
+        streamcalData={data}
+        changeLogDate={changeLogDate}
+        changeLogType={changeLogType}
+      />
+      <StreamcalHelmet channelInfo={data?.channelInfo} />
     </>
   );
 }

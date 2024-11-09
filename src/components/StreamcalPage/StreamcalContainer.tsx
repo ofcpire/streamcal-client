@@ -32,7 +32,7 @@ export default function StreamcalContainer({
 
   return (
     <Suspense fallback={<SkeletonStreamcalPage />}>
-      {dataHolder && (
+      {dataHolder ? (
         <section className='w-screen md:max-w-screen-xl md:mx-4'>
           <ChannelInfo channelInfo={dataHolder.channelInfo} />
           <LoadSelector
@@ -77,6 +77,8 @@ export default function StreamcalContainer({
             </Suspense>
           ) : null}
         </section>
+      ) : (
+        <SkeletonStreamcalPage />
       )}
     </Suspense>
   );
