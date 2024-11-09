@@ -44,7 +44,7 @@ export default function DateLogViewerItem({
         <div className='flex mb-1 items-center'>
           <span className={boxColorByStatus}>카테고리</span>
           <span
-            className='font-semibold cursor-pointer hover:bg-scLightGreyColor px-1 rounded-md'
+            className='font-semibold cursor-pointer hover:bg-scLightGreyColor dark:hover:text-scGreyColor dark:hover:bg-scDarkColor px-1 rounded-md'
             onClick={navToCategoryDetail}>
             {streamLog.liveCategory
               ? `${streamLog.liveCategoryValue} (${underBarRemover(
