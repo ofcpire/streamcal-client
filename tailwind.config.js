@@ -21,6 +21,7 @@ module.exports = {
         scBrightRedColor: '#f04242',
         scDeepDarkColor: '#151515',
         scDarkColor: '#18191a',
+        scGreyColor: '#d6d6d6',
       },
     },
   },

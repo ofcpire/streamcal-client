@@ -3,6 +3,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from './components/global/Layout';
 import StreamcalPage from './pages/StreamcalPage';
 import ChannelPage from './pages/ChannelPage';
+import CategoryListPage from './pages/CategoryListPage';
+import CategoryDetailPage from './pages/CategoryDetailPage';
 const ErrorPage = lazy(() => import('./pages/ErrorPage'));
 
 const router = createBrowserRouter([
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
       {
         path: '/zzk/:channelId',
         element: <StreamcalPage />,
+      },
+      {
+        path: '/category',
+        element: <CategoryListPage />,
+      },
+      {
+        path: '/category/:liveCategory',
+        element: <CategoryDetailPage />,
       },
     ],
     errorElement: (

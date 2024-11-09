@@ -32,7 +32,7 @@
   }
 
   .sc-smInfoBox {
-    @apply p-1 mr-2 text-white text-xs font-medium text-center rounded-lg bg-scGreenColor dark:bg-scDarkModeGreenColor text-nowrap max-h-6;
+    @apply p-1 mr-1 text-white text-xs font-medium text-center rounded-lg bg-scGreenColor dark:bg-scDarkModeGreenColor text-nowrap max-h-6;
   }
 
   .sc-smRedInfoBox {
@@ -49,5 +49,9 @@
 
   .sc-darkModeGreenBg {
     @apply bg-scGreenColor dark:bg-scDarkModeGreenColor
+  }
+
+  .sc-listItem {
+    @apply sc-lightArticle py-3 border block m-2 mt-4 md:mt-2 ml-2 cursor-pointer font-medium md:inline-block p-4 md:p-3 hover:bg-scLightGreyColor dark:hover:bg-scDarkColor dark:border-transparent;
   }
 }
