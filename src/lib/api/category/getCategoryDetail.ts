@@ -7,7 +7,6 @@ const getCategoryDetail = async (
     const res = await api.get(`category/${liveCategory}`);
     return res.data;
   } catch (err) {
-    console.log(err);
     return Promise.reject(err);
   }
 };

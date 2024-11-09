@@ -13,7 +13,6 @@ const getCategoryList = async (
     const res = await api.get('category', { params });
     return res.data;
   } catch (err) {
-    console.log(err);
     return Promise.reject(err);
   }
 };

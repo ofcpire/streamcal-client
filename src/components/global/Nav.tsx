@@ -19,7 +19,7 @@ export default function Nav() {
         <FaBars />
       </button>
       {isNavOpen && (
-        <div className='sm:hidden w-screen h-screen absolute inset-y-0 bg-scOffWhiteColor dark:bg-scBrightDarkColor z-50'>
+        <div className='sm:hidden w-screen h-screen sm:w-0 sm:h-0 absolute inset-y-0 bg-scOffWhiteColor dark:bg-scBrightDarkColor z-50'>
           <button
             onClick={mobileNavSwitch}
             className='m-6 text-scBrightDarkColor dark:text-scOffWhiteColor hover:text-scGreyColor'>

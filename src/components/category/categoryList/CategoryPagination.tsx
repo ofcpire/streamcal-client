@@ -26,7 +26,6 @@ export default function CategoryPagination({
   useEffect(() => {
     setCurrentPage(metadata.page);
   }, [metadata]);
-  console.log(pageCount);
 
   return (
     <nav className='my-4 flex align-middle justify-center'>
