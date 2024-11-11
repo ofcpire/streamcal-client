@@ -1,46 +1,82 @@
-# Getting Started with Create React App
+# STREAMCAL(클라이언트)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 개요
 
-## Available Scripts
+STREAMCAL 프로젝트는 네이버의 게임 스트리밍 플랫폼인 [치지직(chzzk.naver.com)](https://chzzk.naver.com/)에서의 방송 기록들을 수집하고, 스트리머별, 날짜별, 카테고리별 등 다양한 분류를 사용해해 보기 편리하게 제공하는 웹 사이트입니다.
 
-In the project directory, you can run:
+STREAMCAL의 클라이언트와 서버는 오픈 소스이며 영리를 추구하지 않습니다.
 
-### `npm start`
+## 배포
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[STREAMCAL 바로가기](https://streamcal.ch/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+STREAMCAL의 클라이언트는 netlify를 이용해 배포 중입니다.
 
-### `npm test`
+## 스택
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 주요 스택
 
-### `npm run build`
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+<br>![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 기타
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Highcharts.js
+  - Streamcal 페이지에서 타임라인과 카테고리별 시간을 표시하는데 사용됩니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 주요 기능
 
-### `npm run eject`
+- 채널 리스트
+  - 일정 팔로워 이상의 치지직 스트리머 목록을 조회하고 상세 스트리머 로그 페이지로 이동할 수 있습니다.
+- STREAMCAL
+  - 스트리머의 날짜별, 월별 로그를 조회할 수 있는 페이지입니다.
+- 카테고리 리스트
+  - 스트리머들이 치지직에서 사용했던 카테고리들을 조회할 수 있습니다.
+- 상세 카테고리
+  - 최근에 해당 카테고리를 사용한 스트리머의 목록을 조회할 수 있습니다.
+- 에러 페이지
+  - 모달을 통해 핸들링 불가능한 에러(없는 페이지 조회 시도 등)의 경우 표시됩니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 폴더 구조
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+src
+├─components
+│  ├─category
+│  │  ├─categoryDetailPage
+│  │  └─categoryListPage
+│  ├─channelPage
+│  ├─global
+│  └─streamcalPage
+│      ├─Daily
+│      └─Monthly
+├─hooks
+├─lib
+│  ├─api
+│  │  └─category
+│  ├─localStorage
+│  └─utils
+│      └─streamcal
+│          ├─daily
+│          └─monthly
+├─pages
+└─types
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- components: 각 페이지에 쓰이는 컴포넌트를 위한 폴더입니다.
+  - category: /category 경로 아래의 페이지에 쓰이는 컴포넌트입니다.
+    - categoryDetailPage: CategoryDetailPage에 쓰이는 컴포넌트입니다.
+    - categoryListPage: CategoryListPage에 쓰이는 컴포넌트입니다.
+  - channelPage: ChannelPage에 쓰이는 컴포넌트입니다.
+  - global : Header, Footer 등 여러 페이지가 공유하는 컴포넌트 폴더입니다.
+  - streamcalPage: StreamcalPage에 쓰이는 컴포넌트입니다.
+    - Daily: 일별 로그 컴포넌트입니다.
+    - Monthly: 월별 로그 컴포넌트입니다.
+- hooks: 리액트 커스텀 hook을 위한 폴더입니다.
+- lib: 따로 분리가 필요한 코드 혹은 반복적으로 사용되는 코드 폴더입니다.
+  - api: axios 인스턴스 및 함수 폴더입니다.
+  - localStorage: 브라우저 localStorage를 사용하는 함수 폴더입니다.
+  - utils: 공용으로 사용 가능한 순수 함수 폴더입니다.
+- pages: React router에서 직접 사용되는 페이지 컴포넌트를 위한 폴더입니다.
+- types: Typescript 타입 정의를 위한 폴더입니다.
