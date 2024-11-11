@@ -11,7 +11,9 @@ import getCategoryDetail from '../lib/api/category/getCategoryDetail';
 import { ErrorModalContext } from '../components/global/ErrorModalProvider';
 const CategoryDetailContainer = lazy(
   () =>
-    import('../components/category/categoryDetailPage/CategoryDetailContainer')
+    import(
+      '../components/category/categoryDetailPage/CategoryDetailContainer'
+    )
 );
 
 import axios from 'axios';

@@ -10,7 +10,8 @@ import getCategoryList from '../lib/api/category/getCategoryList';
 import { ErrorModalContext } from '../components/global/ErrorModalProvider';
 import axios from 'axios';
 const CategoryListContainer = lazy(
-  () => import('../components/category/categoryListPage/CategoryListContainer')
+  () =>
+    import('../components/category/categoryListPage/CategoryListContainer')
 );
 
 export default function CategoryListPage() {
