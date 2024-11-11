@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaBars, FaX } from 'react-icons/fa6';
+import { isBooleanObject } from 'util/types';
 
 export default function Nav() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const mobileNavSwitch = () => {
-    setIsNavOpen((prev) => !prev);
+  const mobileNavSwitch = (set?: boolean) => {
+    if (set === undefined) setIsNavOpen((prev) => !prev);
+    else setIsNavOpen(set);
   };
 
   return (
@@ -15,13 +17,13 @@ export default function Nav() {
       </div>
       <button
         className='sm:hidden inline-flex items-center text-white font-semibold hover:text-scOffWhiteColor absolute left-6'
-        onClick={mobileNavSwitch}>
+        onClick={() => mobileNavSwitch(true)}>
         <FaBars />
       </button>
       {isNavOpen && (
-        <div className='sm:hidden w-screen h-screen sm:w-0 sm:h-0 absolute inset-y-0 bg-scOffWhiteColor dark:bg-scBrightDarkColor z-50'>
+        <div className='sm:hidden w-screen h-screen sm:w-0 sm:h-0 absolute inset-0 bg-scOffWhiteColor dark:bg-scBrightDarkColor z-50'>
           <button
-            onClick={mobileNavSwitch}
+            onClick={() => mobileNavSwitch(false)}
             className='m-6 text-scBrightDarkColor dark:text-scOffWhiteColor hover:text-scGreyColor'>
             <FaX />
           </button>
@@ -32,10 +34,14 @@ export default function Nav() {
   );
 }
 
-function NavList({ mobileNavSwitch }: { mobileNavSwitch: () => void }) {
+function NavList({
+  mobileNavSwitch,
+}: {
+  mobileNavSwitch: (set?: boolean) => void;
+}) {
   const navigate = useNavigate();
   const goPageByValue = (e: React.MouseEvent<HTMLButtonElement>) => {
-    mobileNavSwitch();
+    mobileNavSwitch(false);
     navigate(e.currentTarget.value);
   };
   return (
