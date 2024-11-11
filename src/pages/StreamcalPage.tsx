@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import StreamcalContainer from '../components/StreamcalPage/StreamcalContainer';
+import StreamcalContainer from '../components/streamcalPage/StreamcalContainer';
 import { useQuery } from '@tanstack/react-query';
 import getStreamcal from '../lib/api/getStreamcal';
-import SkeletonStreamcalPage from '../components/StreamcalPage/SkeletonStreamcalPage';
-import StreamcalHelmet from '../components/StreamcalPage/StreamcalHelmet';
+import StreamcalHelmet from '../components/streamcalPage/StreamcalHelmet';
 import { ErrorModalContext } from '../components/global/ErrorModalProvider';
 import axios from 'axios';
 

@@ -8,7 +8,6 @@ const getChannelList = async (
     const channelList = await api.get('channel', { params });
     return channelList.data;
   } catch (err) {
-    console.log(err);
     return Promise.reject(err);
   }
 };
