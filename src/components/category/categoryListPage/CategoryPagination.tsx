@@ -8,9 +8,6 @@ export default function CategoryPagination({
   metadata: CategoryListDataType['metadata'];
   setPage: (page: number) => void;
 }) {
-  const pageChanger = (e: React.MouseEvent<HTMLLIElement>) => {
-    setPage(Number(e.currentTarget.value));
-  };
   const pageChangerCallback = (page: number) => {
     setPage(page);
   };
@@ -26,6 +23,11 @@ export default function CategoryPagination({
   useEffect(() => {
     setCurrentPage(metadata.page);
   }, [metadata]);
+  const pageChanger = (e: React.MouseEvent<HTMLLIElement>) => {
+    const targetPage = Number(e.currentTarget.value);
+    setCurrentPage(targetPage);
+    setPage(targetPage);
+  };
 
   return (
     <nav className='my-4 flex align-middle justify-center'>

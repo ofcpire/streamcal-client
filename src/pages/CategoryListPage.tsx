@@ -4,8 +4,9 @@ import React, {
   lazy,
   Suspense,
   useEffect,
+  useCallback,
 } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import getCategoryList from '../lib/api/category/getCategoryList';
 import { ErrorModalContext } from '../components/global/ErrorModalProvider';
 import axios from 'axios';
@@ -26,7 +27,7 @@ export default function CategoryListPage() {
   const [isInitial, setIsInitial] = useState(true);
   const { makeErrorModal, closeErrorModal } =
     useContext(ErrorModalContext);
-  const { isLoading, data, refetch } = useQuery({
+  const { isLoading, data, refetch, isPlaceholderData } = useQuery({
     queryKey: [page, searchKeyword],
     queryFn: async () => {
       try {
@@ -40,6 +41,7 @@ export default function CategoryListPage() {
         } else throw new Error(err as string);
       }
     },
+    placeholderData: keepPreviousData,
     retry: 1,
     throwOnError: false,
   });
@@ -54,19 +56,19 @@ export default function CategoryListPage() {
       );
   }, [data]);
 
-  const dispatchPage = (page: number) => {
+  const dispatchPage = useCallback((page: number) => {
     setPage(page);
-  };
-  const dispatchKeyword = (keyword: string) => {
+  }, []);
+  const dispatchKeyword = useCallback((keyword: string) => {
     setSearchKeyword(keyword);
     setPage(1);
-  };
+  }, []);
 
   return (
     <Suspense>
       <CategoryListContainer
         data={data}
-        isLoading={isLoading}
+        isLoading={isPlaceholderData}
         setPage={dispatchPage}
         setKeyword={dispatchKeyword}
       />{' '}

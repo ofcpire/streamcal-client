@@ -8,6 +8,8 @@ import dayjs from 'dayjs';
 import { DarkModeContext } from '../../global/DarkModeProvider';
 import 'dayjs/locale/ko';
 
+HighchartsExporting(Highcharts);
+timeline(Highcharts);
 dayjs.locale('ko');
 
 export default function DateLogChart({
@@ -17,11 +19,7 @@ export default function DateLogChart({
   streamLogArray: StreamLogType[];
   metadata: LogMetadataType;
 }) {
-  HighchartsExporting(Highcharts);
-  timeline(Highcharts);
-
   const { isDarkMode } = useContext(DarkModeContext);
-
   return (
     <article className='sc-lightArticle'>
       <h3 className='sc-articleHeader mb-0 flex justify-between'>

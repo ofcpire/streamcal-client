@@ -9,10 +9,6 @@ export default function CategoryListItem({
 }) {
   const navigate = useNavigate();
   const navToCategoryDetail = () => {
-    const tempValue = {
-      liveCategory: categoryItem.liveCategory,
-      liveCategoryValue: categoryItem.liveCategoryValue,
-    };
     sessionStorage.setItem('tmpcv', JSON.stringify(categoryItem));
     navigate(`/category/${categoryItem.liveCategory}`);
   };

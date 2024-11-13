@@ -5,6 +5,7 @@ import React, {
   useCallback,
   useLayoutEffect,
   useRef,
+  useMemo,
 } from 'react';
 import {
   IoIosNotifications,
@@ -47,17 +48,37 @@ export function ToastProvider({
     []
   );
 
+  const contextValue = useMemo(
+    () => ({ toastArray, addNewToast }),
+    [toastArray, addNewToast]
+  );
+
   return (
-    <ToastContext.Provider value={{ toastArray, addNewToast }}>
+    <ToastContext.Provider value={contextValue}>
       {children}
-      <div className='z-999 flex items-end flex-col bottom-0 right-0 fixed pointer-events-none'>
-        {toastArray.map((toast) => (
-          <ToastItem key={toast.id} toast={toast} remover={removeToast} />
-        ))}
-      </div>
+      <ToastItemContainer
+        toastArray={toastArray}
+        removeToast={removeToast}
+      />
     </ToastContext.Provider>
   );
 }
+
+const ToastItemContainer = React.memo(function ToastItemContainer({
+  toastArray,
+  removeToast,
+}: {
+  toastArray: ToastType[];
+  removeToast: (id: number) => void;
+}) {
+  return (
+    <div className='z-999 flex items-end flex-col bottom-0 right-0 fixed pointer-events-none'>
+      {toastArray.map((toast) => (
+        <ToastItem key={toast.id} toast={toast} remover={removeToast} />
+      ))}
+    </div>
+  );
+});
 
 function ToastItem({
   toast,

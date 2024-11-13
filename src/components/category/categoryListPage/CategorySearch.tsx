@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { IoSearch, IoCloseCircle } from 'react-icons/io5';
 import useSearchDebounce from '../../../hooks/useSearchDebounce';
 
-export default function CategorySearch({
+const CategorySearch = React.memo(function CategorySearch({
   setKeyword,
 }: {
   setKeyword: (keyword: string) => void;
@@ -37,4 +37,6 @@ export default function CategorySearch({
       )}
     </div>
   );
-}
+});
+
+export default CategorySearch;

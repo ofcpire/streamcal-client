@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaBars, FaX } from 'react-icons/fa6';
 import { isBooleanObject } from 'util/types';
 
 export default function Nav() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const mobileNavSwitch = (set?: boolean) => {
+  const mobileNavSwitch = useCallback((set?: boolean) => {
     if (set === undefined) setIsNavOpen((prev) => !prev);
     else setIsNavOpen(set);
-  };
+  }, []);
 
   return (
     <>
@@ -34,7 +34,7 @@ export default function Nav() {
   );
 }
 
-function NavList({
+const NavList = React.memo(function NavList({
   mobileNavSwitch,
 }: {
   mobileNavSwitch: (set?: boolean) => void;
@@ -63,4 +63,4 @@ function NavList({
       </ul>
     </>
   );
-}
+});

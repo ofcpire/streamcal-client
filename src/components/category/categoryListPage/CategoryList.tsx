@@ -1,5 +1,5 @@
 import CategoryListItem from './CategoryListItem';
-export default function CategoryList({
+const CategoryList = function CategoryList({
   categoryList,
 }: {
   categoryList: LiveCategoryType[];
@@ -24,4 +24,6 @@ export default function CategoryList({
       )}
     </article>
   );
-}
+};
+
+export default CategoryList;

@@ -13,9 +13,6 @@ export default function CategoryDetailContainer({
   isLoading: boolean;
   liveCategory: string | undefined;
 }) {
-  const [dataHolder, setDataHolder] = useState<
-    LiveCategoryType | undefined
-  >(data);
   const [title, setTitle] = useState<{
     liveCategory: string;
     liveCategoryValue: string;
@@ -37,7 +34,6 @@ export default function CategoryDetailContainer({
 
   useEffect(() => {
     if (data) {
-      setDataHolder(data);
       setTitle(
         data as {
           liveCategory: string;
@@ -55,24 +51,24 @@ export default function CategoryDetailContainer({
           {underBarRemover(title.liveCategory)}
         </div>
       </h2>
-      {!dataHolder || isLoading ? (
+      {!data || isLoading ? (
         <CategoryDetailSkeleton />
       ) : (
         <>
           <div>
-            {dataHolder.players && (
+            {data.players && (
               <span className='block font-semibold text-base sm:text-xl m-4 text-scBrightDarkColor dark:text-scOffWhiteColor'>
                 <span className='block'>최근 100일 동안</span>
                 <span className='text-scGreenColor'>
-                  {dataHolder.players.length}
+                  {data.players.length}
                 </span>
                 명의 스트리머가 플레이했어요.
               </span>
             )}
           </div>
-          {dataHolder.players ? (
+          {data.players ? (
             <ul className='sm:flex sm:flex-wrap sm:justify-center'>
-              {dataHolder.players?.map((player) => {
+              {data.players?.map((player) => {
                 return (
                   <CategoryDetailItem
                     player={player}

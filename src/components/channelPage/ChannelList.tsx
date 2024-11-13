@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useState } from 'react';
 import ChannelItem from './ChannelItem';
 import {
@@ -18,9 +18,12 @@ export default function ChannelList({
   const [sortRule, setSortRule] = useState('ab');
 
   const changeSortRuleHandler = () => {
-    if (sortRule === 'ab') setSortRule('ba');
-    else if (sortRule === 'ba') setSortRule('ab');
+    setSortRule((prev: string) => {
+      if (prev === 'ab') return 'ba';
+      else return 'ab';
+    });
   };
+  useEffect(() => {}, [channelListData]);
 
   return (
     <>

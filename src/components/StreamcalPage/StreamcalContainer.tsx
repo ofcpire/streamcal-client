@@ -15,53 +15,51 @@ export default function StreamcalContainer({
   streamcalData,
   changeLogDate,
   changeLogType,
-  isLoading,
+  isPlaceholderData,
 }: {
   streamcalData: StreamcalType | undefined;
   changeLogDate: (date: string) => void;
   changeLogType: (date: string) => void;
-  isLoading: boolean;
+  isPlaceholderData: boolean;
 }) {
-  const [dataHolder, setDataHolder] = useState<StreamcalType | undefined>(
-    streamcalData
-  );
-
-  useEffect(() => {
-    if (streamcalData) setDataHolder(streamcalData);
-  }, [streamcalData]);
-
   return (
     <Suspense fallback={<SkeletonStreamcalPage />}>
-      {dataHolder ? (
+      {streamcalData ? (
         <section className='w-screen md:max-w-screen-xl md:mx-4'>
-          <ChannelInfo channelInfo={dataHolder.channelInfo} />
+          <ChannelInfo channelInfo={streamcalData.channelInfo} />
           <LoadSelector
             changeLogDate={changeLogDate}
             changeLogType={changeLogType}
-            isLoading={isLoading}
-            channelInfo={dataHolder.channelInfo}
-            metadata={dataHolder.metadata}
+            isLoading={isPlaceholderData}
+            channelInfo={streamcalData.channelInfo}
+            metadata={streamcalData.metadata}
           />
-          {isLoading ? (
+          {isPlaceholderData || !streamcalData ? (
             <>
               <article className='sc-lightArticleSkeleton'></article>
               <article className='sc-lightArticleSkeleton'></article>
             </>
-          ) : dataHolder.metadata.type === 'date' ? (
-            <>
+          ) : streamcalData.metadata.type === 'date' ? (
+            <Suspense
+              fallback={
+                <>
+                  <article className='sc-lightArticleSkeleton'></article>
+                  <article className='sc-lightArticleSkeleton'></article>
+                </>
+              }>
               <DateLogChart
-                streamLogArray={dataHolder.log}
-                metadata={dataHolder.metadata}
+                streamLogArray={streamcalData.log}
+                metadata={streamcalData.metadata}
               />
               <DateLogViewer
-                streamLogArray={processLogForViewer(dataHolder.log)}
+                streamLogArray={processLogForViewer(streamcalData.log)}
               />
               <TimeLogChart
-                metadata={dataHolder.metadata}
-                streamLogArray={dataHolder.log}
+                metadata={streamcalData.metadata}
+                streamLogArray={streamcalData.log}
               />
-            </>
-          ) : dataHolder.metadata.type === 'month' ? (
+            </Suspense>
+          ) : streamcalData.metadata.type === 'month' ? (
             <Suspense
               fallback={
                 <>
@@ -70,9 +68,9 @@ export default function StreamcalContainer({
                 </>
               }>
               <MonthLogContainer
-                streamLogArray={dataHolder.log}
-                metadata={dataHolder.metadata}
-                channelInfo={dataHolder.channelInfo}
+                streamLogArray={streamcalData.log}
+                metadata={streamcalData.metadata}
+                channelInfo={streamcalData.channelInfo}
               />
             </Suspense>
           ) : null}

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import StreamcalContainer from '../components/streamcalPage/StreamcalContainer';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import getStreamcal from '../lib/api/getStreamcal';
 import StreamcalHelmet from '../components/streamcalPage/StreamcalHelmet';
 import { ErrorModalContext } from '../components/global/ErrorModalProvider';
@@ -20,7 +20,7 @@ export default function StreamcalPage() {
   const [targetDate, setTargetDate] = useState<string | null>(
     new URLSearchParams(location.search).get('date')
   );
-  const { isLoading, data, refetch } = useQuery({
+  const { data, refetch, isPlaceholderData } = useQuery({
     queryKey: [channelId, logType, targetDate],
     queryFn: async () => {
       if (!channelId) throw new Error();
@@ -35,17 +35,18 @@ export default function StreamcalPage() {
         } else throw new Error(err as string);
       }
     },
+    placeholderData: keepPreviousData,
     retry: 1,
     throwOnError: false,
   });
 
-  const changeLogDate = (date: string) => {
+  const changeLogDate = useCallback((date: string) => {
     setTargetDate(date);
-  };
+  }, []);
 
-  const changeLogType = (type: string) => {
+  const changeLogType = useCallback((type: string) => {
     setLogType(type);
-  };
+  }, []);
 
   useEffect(() => {
     if (data) setIsInitial(false);
@@ -60,7 +61,7 @@ export default function StreamcalPage() {
   return (
     <>
       <StreamcalContainer
-        isLoading={isLoading}
+        isPlaceholderData={isPlaceholderData}
         streamcalData={data}
         changeLogDate={changeLogDate}
         changeLogType={changeLogType}
