@@ -3,6 +3,7 @@ import timestampToKo from '../../../lib/utils/timestampToKo';
 import CategoryDetailItem from './CategoryDetailItem';
 import CategoryDetailSkeleton from './CategoryDetailSkeleton';
 import underBarRemover from '../../../lib/utils/underBarRemover';
+import CategoryDetailPlayers from './CategoryDetailPlayers';
 
 export default function CategoryDetailContainer({
   data,
@@ -67,16 +68,7 @@ export default function CategoryDetailContainer({
             )}
           </div>
           {data.players ? (
-            <ul className='sm:flex sm:flex-wrap sm:justify-center'>
-              {data.players?.map((player) => {
-                return (
-                  <CategoryDetailItem
-                    player={player}
-                    key={player.channelId}
-                  />
-                );
-              })}
-            </ul>
+            <CategoryDetailPlayers players={data.players} />
           ) : (
             <span className='block font-bold text-scBrightDarkColor text-xl md:text-xl m-4 dark:text-scOffWhiteColor text-center md:mt-0 md:pt-4'>
               최근 100일 내에 플레이한 스트리머가 없어요.

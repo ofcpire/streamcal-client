@@ -14,7 +14,7 @@ export default function CategoryDetailItem({
 
   return (
     <li
-      className='sc-listItem'
+      className='sc-listItem my-2 py-2'
       onClick={() => goStreamerPage(player.channelId, player.playedAt)}>
       {player.channelInfo?.channelName}
       <div className='text-xs'>
