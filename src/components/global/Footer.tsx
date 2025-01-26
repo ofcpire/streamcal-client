@@ -1,19 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaRegCopyright } from 'react-icons/fa';
+import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
+dayjs.locale('ko');
 
 export default function Footer() {
   const nav = useNavigate();
-  const footerNavHandler = () => {
-    nav('');
-  };
+  const now = dayjs();
 
   return (
-    <footer className='p-4 md:p-6 text-center md:text-left bg-scBrightDarkColor text-white flex flex-col items-center md:items-start'>
-      <span className='block m-1 flex items-center'>
-        2024 STREAMCAL <FaRegCopyright />
+    <footer className='flex flex-col items-center bg-scBrightDarkColor p-4 text-center text-white md:items-start md:p-6 md:text-left'>
+      <span className='m-1 block flex items-center'>
+        {now.year()} STREAMCAL <FaRegCopyright />
       </span>
-      <span className='block m-1'>
+      <span className='m-1 block'>
         STREAMCAL은 수익을 창출하지 않습니다.
       </span>
     </footer>
